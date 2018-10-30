@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  background-color: blue;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+
+input:hover,
+input:active,
+input:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+label {
+  padding: .2rem 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.4rem;
+  padding: 1rem;
+}
+
+.section.login,
+.section.register {
+  background-color: #ffffff;
+  border-radius: .5rem;
+  max-width: 50rem;
+  max-height: 40rem;
+  margin: auto;
+  position: relative;
+}
+
+.section.login {
+  min-height: 20rem;
+}
+
+.section.register {
+  min-height: 30rem;
+  max-width: 25rem;
+  width: 100%;
+}
+
+.section-item {
+  display: flex;
+  align-items: center;
+}
+
+.section-item.column {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.icon-auth {
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  background-color: #ffffff;
+  top: 0;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
