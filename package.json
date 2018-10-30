@@ -33,6 +33,8 @@
     "webpack-dev-server": "^2.11.2"
   },
   "dependencies": {
-    "instascan": "^1.0.0"
+    "babel-polyfill": "^6.26.0",
+    "instascan": "^1.0.0",
+    "quagga": "^0.12.1"
   }
 }
