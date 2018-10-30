@@ -1,0 +1,66 @@
+{
+  "name": "gore-api",
+  "version": "1.0.1",
+  "description": "GORE REST API",
+  "main": "dist",
+  "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "start": "node dist"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": 1
+    }
+  },
+  "author": "GORE",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "buffer": "^5.1.0",
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "crypton": "^1.0.8",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.3",
+    "express-validation": "^1.0.2",
+    "express-validator": "^4.3.0",
+    "form-data": "^2.3.2",
+    "helmet": "^3.12.1",
+    "http-status": "^1.1.2",
+    "idempotent-babel-polyfill": "^6.26.0-1",
+    "joi": "^13.3.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.17",
+    "mongoose": "^5.2.15",
+    "morgan": "^1.8.0",
+    "passport": "^0.4.0",
+    "random-string": "^0.2.0",
+    "redis": "^2.8.0",
+    "redis-server": "^1.2.0",
+    "reqclient": "^2.4.0",
+    "request": "^2.87.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^1.17.5",
+    "standard": "^10.0.3"
+  }
+}
