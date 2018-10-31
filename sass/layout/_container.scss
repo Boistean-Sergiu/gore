@@ -1,0 +1,16 @@
+.container {
+  &--login {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(
+        to bottom,
+        rgba($color-primary, 0.8),
+        rgba($color-primary, 0.8)
+      );
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+}
+body {
+}

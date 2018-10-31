@@ -1,0 +1,95 @@
+.left-side, .right-side{
+  width:20%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.center-side{
+  text-align: left;
+  width: 60%;
+}
+.gr-book__image {
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  float: left;
+  margin-right: 16px;
+  width: auto;
+  max-width: 95px;
+}
+.homePageRailContainer {
+  border-bottom: 1px solid #D8D8D8;
+  margin-bottom: 16px;
+}
+.u-paddingBottomMedium {
+  padding-bottom: 16px;
+}
+.gr-mediaBox__desc--clearfixOverflow {
+  display: block;
+  width: auto !important;
+  overflow: hidden;
+  *zoom: 1;
+}
+.gr-mediaBox__desc {
+  display: table-cell;
+  vertical-align: top;
+  width: 10000px !important;
+  *display: block;
+  *zoom: 1;
+  *width: auto !important;
+}
+.gr-mediaBox:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.gr-book__title {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+.gr-book__author {
+  margin-top: 4px;
+  color: #333333;
+  font-family: "Merriweather", "Georgia", serif;
+  font-size: 12px;
+}
+.gr-book__titleLink {
+  color: #333333;
+  font-family: "Merriweather", "Georgia", serif;
+  font-weight: bold;
+}
+.gr-book__authorLink {
+  color: #333333;
+}
+.u-marginTopTiny {
+  margin-top: 4px;
+}
+
+.gr-button--small {
+  font-size: 11px;
+  padding: 4px 12px;
+}
+.gr-button--quiet {
+  background-color: transparent;
+  padding: 8px 12px;
+  border: 1px solid #382110;
+  color: #382110;
+  font-weight: normal;
+}
+.gr-button {
+  border-radius: 3px;
+  border: 1px solid #D6D0C4;
+  font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 14px;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: #333333;
+  background-color: #F4F1EA;
+  line-height: 1;
+  padding: 8px 12px;
+}

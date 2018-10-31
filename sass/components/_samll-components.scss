@@ -1,0 +1,49 @@
+.menu-search
+{
+  color: $color-white;
+  font-size: 1.4rem;
+  font-weight: 300;
+  & i 
+  {
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+
+  &--small
+  {
+    font-size: 1.4rem;
+  }
+}
+
+.time-zones
+{
+  color: $color-white;
+  font-size: 1.4rem;
+  font-weight: 300;
+  & i
+  {
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+}
+
+.search-bar
+{
+  width: 100%;
+  padding: .8rem 0;
+
+  input[type=search]
+  {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    padding: .8rem;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 275px;
+    background: var(--color-gray-light);
+    color: var(--color-gray-dark);
+    border-radius: 100em;
+
+  }
+}

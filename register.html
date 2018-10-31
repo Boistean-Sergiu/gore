@@ -1,35 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Register</title>
-  <link rel="stylesheet" href="./src/css/auth.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Gore</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-
 <body>
-  <form class="section register">
-    <img src="./src/img/auth.svg" alt="Login user icon" class='icon-auth'>
-    <div class="section-item column">
-      <label>Email</label>
-      <input name="email" type="email" placeholder="Email" />
-    </div>
-    <div class="section-item column">
-      <label>Username</label>
-      <input name="username" type="text" placeholder="Username" />
-    </div>
-    <div class="section-item column">
-      <label>Password</label>
-      <input name="password" type="password" placeholder="Password" />
-    </div>
-    <div class="section-item column">
-      <label>Retype password</label>
-      <input name="confirmPassword" type="password" placeholder="Confirm password" />
-    </div>
-    <button>Register</button>
-  </form>
-</body>
+<main class="container container--login">
+    <form action="" class="form">
+        <a href="index.html" style="width: 100%"><h1 href="#" class="logo logo--block"><span>Gore</span> </h1></a>
 
+        <div class="form__group">
+            <div class="form__field">
+                <input type="email" placeholder="Firstname">
+            </div>
+            <div class="form__field">
+                <input type="email" placeholder="Lastname">
+            </div>
+        </div>
+
+        <div class="form__field">
+            <input type="email" placeholder="Email Adress">
+        </div>
+
+        <div class="form__field">
+            <input type="password" placeholder="Password">
+        </div>
+
+
+        <div class="form__field">
+            <input type="password" placeholder="Repeat Password">
+        </div>
+
+        <div class="form__agree">
+            <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+            <label for="styled-checkbox-1">I agree to the <a href="#">terms and conditions</a></label>
+        </div>
+
+        <button class="button button--transparent form__button">Register</button>
+        <a class="form__sign-up" href="login.html">Do you have an account? <span>Login</span></a>
+    </form>
+</main>
+</body>
 </html>

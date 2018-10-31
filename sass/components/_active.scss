@@ -1,0 +1,17 @@
+.active
+{
+  &.panel
+  {
+    transform: translateX(0);
+    transition: transform .33s ease-in-out;
+
+  }
+}
+
+.panel-nav
+{
+  li.active 
+  {
+    color: $color-primary;
+  }
+}

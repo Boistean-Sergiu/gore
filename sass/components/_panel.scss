@@ -1,0 +1,113 @@
+.panel
+{
+  width: 25%;
+  min-width: 32.5rem;
+  background-color: $color-white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-shadow: $shadow-close;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 200;
+
+  transform: translateX(100%);
+  transition: transform .33s ease-in-out;
+  
+
+  &__header
+  {
+    display: flex;
+    align-items: center;
+    height: 4.8rem;
+    width: 100%;
+    background-color: var(--color-gray-light);
+    position: relative;
+    // position: fixed;
+    // width: inherit;
+    // max-width: inherit;
+
+    & .button-control
+    {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 1.4rem;
+    }
+
+    & h2 
+    {
+      margin:  0 auto;
+      font-size: 2.2rem;
+    }
+  }
+
+  &__nav 
+  {
+    background-color: $color-white;
+    position: relative;
+    // width: inherit;
+    // max-width: inherit;
+    // top: 40px;
+    ul
+    {
+      display: flex;
+      justify-content: space-between;
+      padding: .8rem .8rem;
+      border-bottom: 1px solid var(--color-gray-light);
+      a 
+      {
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+        color: var(--color-gray-dark);
+        cursor: pointer;
+        &:hover
+        {
+
+          color: $color-primary;
+        }
+      }
+
+      li
+      {
+        // position: relative;
+        // &::after
+        // {
+        //   content: "";
+        //   position: absolute;
+        //   width: 150%;
+        //   height: 33px;
+        //   background-color: $color-primary;
+        //   bottom: -4px;
+        //   left: 0;
+        //   transform: translateX(-50%);
+        // }
+      }
+    }
+  }
+
+  &__slide
+  {
+    position: absolute;
+    top: 8.9rem;
+    left: 0;
+    width: 100%;
+    transform: translateX(100%);
+    transition: transform .33s ease-in-out;
+    background-color: $color-white;
+  }
+
+  &__toggler
+  {
+    color: $color-white;
+
+    &:hover 
+    {
+      color: var(--color-gray-light);
+      transition: all .25s ease-in-out;      
+    }
+  }
+
+
+}

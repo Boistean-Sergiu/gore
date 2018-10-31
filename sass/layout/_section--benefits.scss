@@ -1,0 +1,33 @@
+.section--benefits {
+	background: linear-gradient(to bottom,
+		rgba($color-primary, 0.8), 
+		rgba($color-primary, 0.8));
+	background-size: cover;	
+	background-position: top;
+	// height: 60rem;
+	overflow: auto;
+	padding-bottom: 5rem;
+
+	@include respond(tab-land) {
+		padding: 0 3rem 5rem 3rem; 
+	}
+
+	&__wrapper {
+		max-width: 120rem;
+		margin: 0 auto;
+	}
+
+	.section__title {
+		margin-top: 5rem;
+		color: rgba($color-white, 0.9);
+	}
+
+	.benefits {
+		display: flex;
+		justify-content: space-between;
+
+		@include respond(phone) {
+			flex-direction: column; 
+		}
+	}
+}

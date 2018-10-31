@@ -1,0 +1,16 @@
+.map,
+.pin-layer
+{
+  display: block;
+  position: absolute;
+  top: 4.8rem;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 4.8rem);
+  z-index: 0;
+}
+
+.pin-layer
+{
+  z-index: 1;
+}
