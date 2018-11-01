@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Repository pentru proiect dawnc",
   "scripts": {
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
     "dev": "webpack --watch --watch-poll"
   },
   "repository": {
@@ -24,7 +25,7 @@
     "babel-preset-env": "^1.7.0",
     "css-loader": "^0.28.11",
     "cssnano": "^3.10.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.9.4",
     "postcss-loader": "^2.1.5",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",

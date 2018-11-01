@@ -2,7 +2,18 @@ import Product from '../models/mongo/ProductModel'
 
 export const getProduct = async (req, res) => {
   try {
-    let product = await Product.findOne({_id: parseInt(req.params.id, 10)}).exec()
+    let product = await Product.findOne({
+      $or: [
+        {_id: parseInt(req.params.id, 10)},
+        {_id: req.params.id}
+      ]
+    }).exec()
+    console.log({
+      $or: [
+        {_id: parseInt(req.params.id, 10)},
+        {_id: req.params.id}
+      ]
+    })
     if (product) {
       return res.json(product)
     }

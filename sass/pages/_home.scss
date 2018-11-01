@@ -1,13 +1,4 @@
-.left-side, .right-side{
-  width:20%;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-.center-side{
-  text-align: left;
-  width: 60%;
-}
+
 .gr-book__image {
   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
   -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -24,11 +15,24 @@
 .u-paddingBottomMedium {
   padding-bottom: 16px;
 }
+.u-paddingTopMedium {
+  padding-bottom: 16px;
+}
 .gr-mediaBox__desc--clearfixOverflow {
   display: block;
   width: auto !important;
   overflow: hidden;
   *zoom: 1;
+}
+.gr-mediaBox{
+  display: flex;
+  position: relative;
+}
+.product-image{
+  height: 200px;
+}
+.title{
+  padding: 10px 0;
 }
 .gr-mediaBox__desc {
   display: table-cell;
@@ -62,10 +66,14 @@
   color: #333333;
 }
 .u-marginTopTiny {
-  margin-top: 4px;
+  margin-top: 10px;
 }
-
+.gr-book__additionalContent{
+  bottom: 0;
+  position: absolute;
+}
 .gr-button--small {
+  width:150px;
   font-size: 11px;
   padding: 4px 12px;
 }

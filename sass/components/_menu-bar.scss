@@ -1,15 +1,10 @@
 .menu-bar
 {
-  height: 4.8rem;
+  height: 4.8rem!important;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 1.6rem;
-  background: $color-primary;
-
-
-  position: absolute;
   left: 0;
   top: 0;
   z-index: 100;
