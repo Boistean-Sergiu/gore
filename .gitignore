@@ -1,7 +1,8 @@
 node_modules
 api/.env
-css
 package-lock.json
 .idea
 dist
 css
+*.css
+css/style.css
