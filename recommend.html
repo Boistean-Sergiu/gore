@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>GORE APP</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stymenu-barlesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -29,16 +29,16 @@
         </header>
         <div class="landing-wrapper" style="margin-top: 6rem;">
             <div class="flex-container">
-                <div class="left-side filters">
+                <form class="left-side filters">
                     <h4 class="title">Filters</h4>
                     <div>
                         <div class="range-slider">
                             <div>
-                                <label id="price-slider-label" for="price-slider">Price</label>
+                                <label id="price-slider-label">Price</label>
                             </div>
+                            <!-- se-min="-100" se-step="1" se-max="100"  -->
                             <div>
-                                <div id="price-slider" se-min="-100" se-step="1" data-min-value="40" data-max-value="40"
-                                    se-max="100" class="slider">
+                                <div id="price-slider" data-min-value="40" data-max-value="40" class="slider">
                                     <div class="slider-touch-left">
                                         <span></span>
                                     </div>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="right-side recommendations">
                     <h4 class="title">Recommendations</h4>
                     <div class="gr-homePageRailContainer u-paddingBottomMedium u-paddingTopMedium">
@@ -152,7 +152,7 @@
             </div>
         </div>
     </div>
-    <script type="application/javascript" src="dist/index.js"></script>
+    <script src="dist/index.js"></script>
 </body>
 
 </html>
