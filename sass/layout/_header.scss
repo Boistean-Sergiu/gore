@@ -1,17 +1,16 @@
 .header {
 	height: 35vh;
 	position: relative;
-	background-image: linear-gradient(
-		to bottom, 
-		rgba($color-primary, 0.8), 
+	background-image: linear-gradient(to bottom,
+		rgba($color-primary, 0.8),
 		rgba($color-primary, 0.8));
 	background-size: cover;
 	background-position: top;
-		
+
 	.header__wrapper {
 		@include absCenter;
 		text-align: center;
-		color:$color-white;
+		color: $color-white;
 		line-height: 1;
 
 		@include respond(tab-land) {
@@ -28,10 +27,10 @@
 		font-size: 9.3rem;
 		margin: 2rem 0;
 		font-weight: 600;
-    	animation: slideLeft 1s ease-out;
-    	backface-visibility: hidden;
+		animation: slideLeft 1s ease-out;
+		backface-visibility: hidden;
 
-    	@include respond(tab-land) {
+		@include respond(tab-land) {
 			font-size: 8.3rem;
 		}
 
@@ -42,7 +41,7 @@
 		@include respond(phone) {
 			font-size: 6.3rem;
 		}
-		
+
 		span {
 			color: $color-black;
 			font-size: 9.6rem;
@@ -70,21 +69,11 @@
 		backface-visibility: hidden;
 	}
 
-	.header__description {
-		font-size: 1.8rem;
-		margin: 7rem 0;
-		backface-visibility: hidden;
-
-		@include respond(phone) {
-			margin: 3rem 0;
-		}
-	}
-
 	.button {
 		margin: 2rem 0;
 		display: inline-block;
 
-		&:first-of-type{
+		&:first-of-type {
 			margin-right: .5rem;
 		}
 
@@ -93,4 +82,3 @@
 		}
 	}
 }
-

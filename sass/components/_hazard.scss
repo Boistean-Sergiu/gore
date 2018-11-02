@@ -1,70 +1,61 @@
-.hazard
-{
+.hazard {
   display: flex;
   align-items: center;
   padding: 1.6rem;
   font-weight: 300;
   cursor: pointer;
 
-  &:hover
-  {
-  background-color: var(--color-gray-light);
-  transition: background-color .25s ease-in-out;    
+  &:hover {
+    background-color: var(--color-gray-light);
+    transition: background-color .25s ease-in-out;
   }
 
-  &:first-child
-  {
+  &:first-child {
     margin-top: .8rem;
   }
 
-  &__info
-  {
+  &__info {
     margin: 0 auto;
-    & > *
-    {
+
+    &>* {
       margin-bottom: .4rem;
     }
-    h4
-    {
+
+    h4 {
       color: currentColor;
       font-size: 1.6rem;
       font-weight: normal;
     }
 
-    h3
-    {
+    h3 {
       color: $color-black;
       font-size: 1.8rem;
 
     }
 
-    b
-    {
+    b {
       font-size: 1.4rem;
       color: var(--color-gray-dark);
       display: block;
     }
 
-    .menu-search
-    {
+    .menu-search {
       color: var(--color-gray-medium);
     }
   }
 
-  &__icon
-  {
+  &__icon {
     border-radius: 100em;
     display: block;
     width: 6.4rem;
     height: 6.4rem;
   }
 
-  &__data
-  {
+  &__data {
     text-align: left;
     margin-top: 3.2rem;
-    p 
-    {
+
+    p {
       color: $color-black;
       text-align: left;
       margin-top: 1.6rem;
@@ -72,104 +63,93 @@
       line-height: 1.4rem;
     }
 
-    b
-    {
+    b {
       margin-top: .8rem;
     }
   }
 
-  &__gallery
-  {
+  &__gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
-  &__photo
-  {
+  &__photo {
     flex: 0 1 48%;
     margin-top: 1.6rem;
     cursor: pointer;
     overflow: hidden;
-    img 
-    {
+
+    img {
       width: 100%;
       height: 100%;
       object-position: center;
       object-fit: cover;
       transition: transform .15s ease-in-out;
-      &:hover 
-    {
-      transform: scale(1.2);
-      transition: transform .25s ease-in-out;
-    }
+
+      &:hover {
+        transform: scale(1.2);
+        transition: transform .25s ease-in-out;
+      }
     }
   }
 
-  &__find-icon
-  {
+  &__find-icon {
     font-size: 8rem;
     color: $color-black;
     margin: 1.6rem 0;
-    &:hover
-    {
+
+    &:hover {
       color: $color-primary;
       transition: color .25s ease-in-out;
     }
   }
 
-  &--brief
-  {
+  &--brief {
     flex-direction: column;
-    &:hover
-      {
-        background-color: $color-white;
-      }
-    & .hazard__info
-    {
+
+    &:hover {
+      background-color: $color-white;
+    }
+
+    & .hazard__info {
       margin-top: .8rem;
       width: 100%;
       text-align: center;
       cursor: default;
-      
+
     }
   }
 
-  &--option
-  {
+  &--option {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
 
-    & > * 
-    {
+    &>* {
       margin-top: .8rem;
     }
 
-    h4
-    {
+    h4 {
       margin-bottom: .8rem;
     }
 
-    .login__field
-    {
+    .login__field {
       margin-bottom: 0;
     }
 
-    &:hover
-    {
+    &:hover {
       background-color: $color-white;
     }
   }
 
-  &__person-avatar
-  {
+  &__person-avatar {
     border-radius: 100em;
     width: 6.4rem;
     height: 6.4rem;
     overflow: hidden;
-    img 
-    {
+
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -178,64 +158,56 @@
   }
 }
 
-.hazard
-{
-  &--earthquake
-  {
+.hazard {
+  &--earthquake {
     color: var(--color-accent-1);
-    .hazard__icon
-    {
+
+    .hazard__icon {
       background-color: var(--color-accent-1);
       background-image: url(../img/cric-icons/earthquake.svg);
     }
   }
 
-  &--meteors
-  {
+  &--meteors {
     color: var(--color-accent-2);
-    .hazard__icon
-    {
+
+    .hazard__icon {
       background-color: var(--color-accent-2);
       background-image: url(../img/cric-icons/meteors.svg);
     }
 
   }
 
-  &--tsunami
-  {
+  &--tsunami {
     color: var(--color-accent-3);
-    .hazard__icon
-    {
+
+    .hazard__icon {
       background-color: var(--color-accent-3);
       background-image: url(../img/cric-icons/tsunami.svg);
     }
   }
 
-  &--tornado
-  {
+  &--tornado {
     color: var(--color-accent-4);
-    .hazard__icon
-    {
+
+    .hazard__icon {
       background-color: var(--color-accent-4);
       background-image: url(../img/cric-icons/tornado.svg);
     }
   }
 
-  &--wind
-  {
+  &--wind {
     color: var(--color-accent-5);
-    .hazard__icon
-    {
+
+    .hazard__icon {
       background-color: var(--color-accent-5);
       background-image: url(../img/cric-icons/wind.svg);
     }
   }
 }
 
-.hazard 
-{
-  &__pin
-  {
+.hazard {
+  &__pin {
     position: absolute;
     background-image: url(../img/cric-icons/pin.svg);
     background-repeat: no-repeat;
@@ -251,7 +223,7 @@
     top: 100px;
     left: 100px;
 
-    .hazard__icon{
+    .hazard__icon {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -261,5 +233,3 @@
     }
   }
 }
-
-
