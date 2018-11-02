@@ -1,2 +1,7 @@
 node_modules
 api/.env
+css
+package-lock.json
+.idea
+dist
+css

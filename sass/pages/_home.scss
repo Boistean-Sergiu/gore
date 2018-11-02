@@ -1,5 +1,5 @@
 
-.gr-book__image {
+.product-image {
   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
   -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -7,33 +7,38 @@
   margin-right: 16px;
   width: auto;
   max-width: 95px;
+  height: 200px;
 }
+
 .homePageRailContainer {
   border-bottom: 1px solid #D8D8D8;
   margin-bottom: 16px;
 }
+
 .u-paddingBottomMedium {
   padding-bottom: 16px;
 }
+
 .u-paddingTopMedium {
   padding-bottom: 16px;
 }
+
 .gr-mediaBox__desc--clearfixOverflow {
   display: block;
   width: auto !important;
   overflow: hidden;
   *zoom: 1;
 }
+
 .gr-mediaBox{
   display: flex;
   position: relative;
 }
-.product-image{
-  height: 200px;
-}
+
 .title{
   padding: 10px 0;
 }
+
 .gr-mediaBox__desc {
   display: table-cell;
   vertical-align: top;
@@ -42,41 +47,50 @@
   *zoom: 1;
   *width: auto !important;
 }
+
 .gr-mediaBox:after {
   content: "";
   display: table;
   clear: both;
 }
-.gr-book__title {
+
+.product-name {
   font-weight: bold;
   word-wrap: break-word;
 }
-.gr-book__author {
+
+.product-manufacturer {
   margin-top: 4px;
   color: #333333;
   font-family: "Merriweather", "Georgia", serif;
   font-size: 12px;
 }
-.gr-book__titleLink {
+
+.product-nameLink {
   color: #333333;
   font-family: "Merriweather", "Georgia", serif;
   font-weight: bold;
 }
-.gr-book__authorLink {
+
+.product-manufacturerLink {
   color: #333333;
 }
+
 .u-marginTopTiny {
   margin-top: 10px;
 }
-.gr-book__additionalContent{
+
+.product-additionalContent{
   bottom: 0;
   position: absolute;
 }
+
 .gr-button--small {
   width:150px;
   font-size: 11px;
   padding: 4px 12px;
 }
+
 .gr-button--quiet {
   background-color: transparent;
   padding: 8px 12px;
@@ -84,6 +98,7 @@
   color: #382110;
   font-weight: normal;
 }
+
 .gr-button {
   border-radius: 3px;
   border: 1px solid #D6D0C4;

@@ -36,6 +36,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "instascan": "^1.0.0",
+    "npm": "^6.4.1",
     "quagga": "^0.12.1"
   }
 }
