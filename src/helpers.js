@@ -32,8 +32,8 @@ let ZBRangeSlider = function (id) {
   let lineSpan = slider.querySelector('.slider-line span')
 
   // get some properties
-  let min = parseFloat(slider.getAttribute('se-min'))
-  let max = parseFloat(slider.getAttribute('se-max'))
+  let min = parseFloat(slider.getAttribute('data-min'))
+  let max = parseFloat(slider.getAttribute('data-max'))
 
   // retrieve default values
   let defaultMinValue = min
@@ -236,13 +236,13 @@ export const initZBRangeSlider = (id, label) => {
     console.log('init')
 
     console.log(min, max, this)
-    document.getElementById(label).innerHTML = 'Price   Min: ' + min + ' Max: ' + max
+    document.getElementById(label).innerHTML = 'Price   Min: ' + parseInt(min, 10) + ' Max: ' + parseInt(max, 10)
   }
 
   newRangeSlider.didChanged = function (min, max) {
     console.log('init3')
 
     console.log(min, max, this)
-    document.getElementById(label).innerHTML = 'Price  Min: ' + min + ' Max: ' + max
+    document.getElementById(label).innerHTML = 'Price  Min: ' + parseInt(min, 10) + ' Max: ' + parseInt(max, 10)
   }
 }
