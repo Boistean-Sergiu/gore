@@ -377,6 +377,6 @@ p.issue {
 }
 
 #biblio-references,
-li:last-child {
+div>ol:first-of-type>li:last-child {
   display: none;
 }
