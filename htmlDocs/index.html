@@ -55,19 +55,19 @@
       No project has ever been created without any kind of planning. As such, we too went through a planning process to
       create the Gore app.
     </p>
-    <section id="General view">
-      <h2>General view</h2>
+    <section id="The general view">
+      <h2>The general view</h2>
       <p>
         As we couldn't know from the beginning how our app will work, not perfectly at least, it was needed a general
         view on what the use can do. As such, we created a number of AML schemas to display our view on the user
         possibilities and the general arhitecture of the api needed for such app.
       </p>
       <p>
-        <img src="./imgs/general2.png" />
+        <img src="./imgs/general1.png" />
       </p>
     </section>
-    <section id="Particular view">
-      <h2>Particular view</h2>
+    <section id="The particular view">
+      <h2>The particular view</h2>
       <p>
         Of course, a general view can not show our intentions with the app to a third party, or to ourselves in case we
         need to step back someday and remind ourselves what we wanted to do with Gore and to keep it simpe. As such, a
@@ -76,9 +76,27 @@
         receival of recommandations.
       </p>
       <p>
-        <img src="./imgs/general1.png" />
+        <img src="./imgs/general2.png" />
       </p>
     </section>
+    <section id="The server">
+      <h2>The server</h2>
+      <p>
+        Or api, respects the restful principles , i.e it exposes the information required by the client at a call, each call having a different URI. The server knows what information it must returns from the headers sent together with the call itself.
+      </p>
+      <p>
+        <img src="./imgs/api.png" />
+      </p>
+    </section>
+  </section>
+  <section id="The database">
+    <h2>The database</h2>
+    <p>
+      While the api interprets the calls form the client, the information it gets doesnt come from nowhere, but from a specific database. The database will hold information referring to each user, from username and password(after being crypted), to the user's preferences.
+    </p>
+    <p>
+      <img src="./imgs/bd.jpg" alt="The database diagram">
+    </p>
   </section>
   <section typeof="sa:Structure" id="structure" role="doc-structure">
     <h2>Structure</h2>
