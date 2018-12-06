@@ -15,6 +15,12 @@
   </header>
   <div role="contentinfo">
     <dl>
+      <dt>Page</dt>
+      <dd>
+        <a href="../index.html">Index page</a>
+      </dd>
+    </dl>
+    <dl>
       <dt>Authors</dt>
       <dd>
         Boistean Sergiu Andrei, Laslau Laurentiu, Dobos Alexandru Stefan
@@ -42,6 +48,31 @@
       wish to see, or even scan products to add them as your favorite to make the search more efficient, and you may
       discover products you weren't aware of or even might get in the mood to eat something you haven't in a long time!
     </p>
+  </section>
+  <section typeof="sa:Development" id="development" role="doc-development">
+    <h2>Development</h2>
+    <p>
+      No project has ever been created without any kind of planning. As such, we too went through a planning process to
+      create the Gore app.
+    </p>
+    <section id="General view">
+      <h2>General view</h2>
+      <p>
+        As we couldn't know from the beginning how our app will work, not perfectly at least, it was needed a general
+        view on what the use can do. As such, we created a number of AML schemas to display our view on the user
+        possibilities and the general arhitecture of the api needed for such app.
+      </p>
+    </section>
+    <section id="Particular view">
+      <h2>Particular view</h2>
+      <p>
+        Of course, a general view can not show our intentions with the app to a third party, or to ourselves in case we
+        need to step back someday and remind ourselves what we wanted to do with Gore and to keep it simpe. As such, a
+        particular view on each possibility of the user was needed, this "particular view" being each use case. The use
+        cases in our ... case were the login, the product addition to the favorites list, the bar code scan and the
+        receival of recommandations.
+      </p>
+    </section>
   </section>
   <section typeof="sa:Structure" id="structure" role="doc-structure">
     <h2>Structure</h2>
@@ -114,6 +145,36 @@
         every filter change.</p>
     </section>
   </section>
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org/",
+        "@type": "WebSite",
+        "name": "GORE",
+        "image": [
+            "../img/Index.png",
+            "../img/Menu.png",
+            "../img/RecommendsPhoto.png",
+            "../img/ScanPhoto.png",
+        ],
+        "description": "GORE, Best Goods Web Recommender",
+        "brand": {
+            "@type": "Thing",
+            "name": "ACME"
+        },
+        "about": ["Products", "Products recommandations", "Recommandations", "Scan"],
+        "accessMode": "visual",
+        "aggregateRating": "10",
+        "alternativeHeadline": "Best Goods Web Recommender",
+        "audience": {
+            "audienceType": "Gourmet"
+        },
+        "contentRating": "10",
+        "creator": "Boistean Sergiu Andrei, Laslau Laurentiu, Dobos Stefan",
+        "educationalUse": "Group Work",
+        "keywords": "Products, Products recommandations, Recommandations, Scan",
+        "isFamilyFriendly": true
+    }
+  </script>
 </body>
 
 </html>
