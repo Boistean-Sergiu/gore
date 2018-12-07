@@ -53,7 +53,7 @@
     <h2>Development</h2>
     <p>
       No project has ever been created without any kind of planning. As such, we too went through a planning process to
-      cr
+      create the Gore app.
       <section id="The arhitecture">
         <h2>The arhitecture</h2>
         <p>
@@ -62,7 +62,7 @@
         <p>
           <img src="./imgs/arhitecture.jpg" />
         </p>
-      </section>eate the Gore app.
+      </section>
     </p>
     <section id="The general view">
       <h2>The general view</h2>
@@ -131,6 +131,13 @@
         We separated the scanning from the recommandations list to ease the add and removal of favorite products for
         the user, making it a list of its own.
       </p>
+      <h4>Examples:
+      </h4>
+      <p>GET /api/product/53232690265</p>
+      <p>Response:</p>
+      <p>{id: 133, code:53232690265, name:"Coca Cola"}</p>
+      <p>or</p>
+      <p>{error: "Product not found"}</p>
       <p>
         <img src="./imgs/scan.png" />
       </p>
@@ -141,6 +148,13 @@
         Giving filters for the user to use, the page will show recommended items based on said filter and the already
         preferred products of the user.
       </p>
+      <h4>Examples:
+      </h4>
+      <p>GET /api/recommandations/akdh72212okdjsnad8</p>
+      <p>Response:</p>
+      <p>[{id: 133, code:53232690265, name:"Coca Cola"}]</p>
+      <p>or</p>
+      <p>{error: "No recommandations found"}</p>
       <p>
         <img src="./imgs/recommandations.png"/>
       </p>
@@ -152,6 +166,13 @@
         your friends, a
         facebook login was implemented.
       </p>
+      <h4>Examples:
+      </h4>
+      <p>POST /api/login {username: "vasile.croitoru", password: "password"}</p>
+      <p>Response:</p> 
+      <p>{id: "aasodask8aihj23213", name:"Vasile Croitoru", token: "atkarasi23123"}</p>
+      <p>or</p>
+      <p>{error: "Login failed"}</p>
       <p>
         <img src="./imgs/login.png"/>
       </p>
@@ -161,6 +182,13 @@
       <p>
         Gore app gives the user the possibility to see the statistics for the general userbase of the app, as the user himself and his friends.
       </p>
+      <h4>Examples:
+      </h4>
+      <p>GET /api/statistics</p>
+      <p>Response:</p>
+      <p>[{name: "cocacola",value: "30%"}...]</p>
+      <p>or</p>
+      <p>{error: "Something went wrong"}</p>
       <p>
         <img src="./imgs/statistics.png"/>
       </p>
