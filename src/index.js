@@ -1,15 +1,9 @@
 import 'babel-polyfill'
-import { onReady, initZBRangeSlider, initScanner, scan } from './helpers'
+import { onReady, initZBRangeSlider } from './helpers'
 
 onReady(async () => {
-  let slider = document.getElementById('price-slider')
-  if (slider) {
-    initZBRangeSlider('price-slider', 'price-slider-label')
-  }
-  let scanButton = document.getElementById('scan-product')
-  if (scanButton) {
-    initScanner()
-    scanButton.addEventListener('click', scan)
-  }
-})
+  initZBRangeSlider('price-slider', 'price-slider-label')
 
+  // let response = await fetch(`http://localhost:8080/api/products/${result.codeResult.code}`)
+  // console.log(response)
+})

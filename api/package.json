@@ -37,13 +37,11 @@
     "express-validator": "^4.3.0",
     "form-data": "^2.3.2",
     "helmet": "^3.12.1",
-    "html-metadata": "git://github.com/wikimedia/html-metadata.git",
     "http-status": "^1.1.2",
     "idempotent-babel-polyfill": "^6.26.0-1",
     "joi": "^13.3.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
-    "metascraper": "^4.8.5",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.17",
     "mongoose": "^5.2.15",
@@ -53,8 +51,7 @@
     "redis": "^2.8.0",
     "redis-server": "^1.2.0",
     "reqclient": "^2.4.0",
-    "request": "^2.87.0",
-    "url-metadata": "^2.2.1"
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
