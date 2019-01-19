@@ -3,22 +3,6 @@ export const onReady = (code) => {
     code()
   })
 }
-export const rangeSlider = () => {
-  let slider = document.getElementsByClassName('range-slider')
-  let range = document.getElementsByClassName('range-slider__range')
-  let value = document.getElementsByClassName('range-slider__value')
-
-  slider.each(function () {
-
-    value.each(function () {
-      // let value = $(this).prev().attr('value')
-      // $(this).html(value)
-    })
-    range.addEventListener('input', function () {
-      // $(this).next(value).html(this.value)
-    })
-  })
-}
 // THIS IS THE RANGE SLIDER LOGIC DO NOT CHANGE !!
 let ZBRangeSlider = function (id) {
   let self = this
@@ -245,4 +229,68 @@ export const initZBRangeSlider = (id, label) => {
     console.log(min, max, this)
     document.getElementById(label).innerHTML = 'Price  Min: ' + parseInt(min, 10) + ' Max: ' + parseInt(max, 10)
   }
+}
+
+export function initScanner () {
+  var reader = null
+  var iptEl = document.getElementById('uploadImage')
+  dynamsoft.dbrEnv.resourcesPath = 'https://demo.dynamsoft.com/dbr_wasm/js'
+  dynamsoft.dbrEnv.licenseKey = 't0085VwAAACn3QS4z3l/rNV2dxif4pSZmcyanZuJjoS3GiM8TcxzxDQHXHBTmmSKXCJvO2NYqyqGdSKc4r+ADH61eA7qdCI+rsHpiyeTIRVHPGfwBnw0WNg=='
+  dynamsoft.dbrEnv.onAutoLoadWasmSuccess = function () {
+    reader = new dynamsoft.BarcodeReader()
+  }
+  iptEl.addEventListener('change', function () {
+    reader.decodeFileInMemory(this.files[0]).then(function (results) {
+      if (results && results.length) {
+        fetch(`http://localhost:8080/api/products/${results[0].BarcodeText}`, {
+          credentials: 'include'
+        }).then(response => response.json())
+          .then(data => { paintScannedProduct(data) })
+          .catch(function () {
+            alert('Product does not exist in our database')
+          })
+      } else {
+        alert('Code was not recognised')
+      }
+    }).catch(ex => {
+      alert('error:' + (ex.message || ex))
+    })
+    this.value = ''
+  })
+}
+
+export function scan () {
+  document.getElementById('uploadImage').click()
+}
+
+export function paintScannedProduct (product) {
+  console.log(product)
+  let html = '<div class="gr-mediaBox   ">\n' +
+    '                        <img alt="coca cola" class=" product-image product-image"\n' +
+    '                             src="' + product.image + '"/>\n' +
+    '                        <div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow">\n' +
+    '                            <div class="product-name"><a\n' +
+    '                                    target="_blank" href="' + (product.sources && product.sources.length && product.sources[0].url ? product.sources[0].url : '') + '"\n' +
+    '                                    class="product-nameLink  --naked">' + product.product_name + '</a></div>\n' +
+    '                            <div class="product-manufacturer"><span>' + (product.brands ? 'by ' : '') + '</span><div\n' +
+    '                                     \n' +
+    '                                    class="product-manufacturerLink  --naked">' + product.brands + '</div><span\n' +
+    '                                    class=" --authorBadge"></span></div>\n' +
+    '                            <div class="product-additionalContent"><a href="#">' +
+    '                                <div>\n' +
+    '                                    <button class="gr-button gr-button--quiet u-marginTopTiny gr-button--small">Add\n' +
+    '                                        to\n' +
+    '                                        favourites\n' +
+    '                                    </button>\n' +
+    '                                </div>\n' +
+    '                                <div>\n' +
+    '                                    <button class="gr-button gr-button--quiet u-marginTopTiny gr-button--small">View\n' +
+    '                                        similar\n' +
+    '                                    </button>\n' +
+    '                                </div>\n' +
+    '                            </div>\n' +
+    '                        </div>\n' +
+    '                    </div>'
+  let productElement = document.getElementById('scanned-product')
+  productElement.innerHTML = html
 }
