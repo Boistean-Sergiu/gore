@@ -6,3 +6,5 @@ dist
 css
 *.css
 css/style.css
+package-lock.json
+package.json
