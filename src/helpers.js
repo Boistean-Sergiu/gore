@@ -245,7 +245,14 @@ export function initScanner () {
         fetch(`http://localhost:8080/api/products/${results[0].BarcodeText}`, {
           credentials: 'include'
         }).then(response => response.json())
-          .then(data => { paintScannedProduct(data) })
+          .then(data => {
+              if (data.product_name) {
+                paintScannedProduct(data)
+              } else {
+                throw new Error('Product does not exist in our database')
+              }
+            }
+          )
           .catch(function () {
             alert('Product does not exist in our database')
           })
@@ -264,7 +271,6 @@ export function scan () {
 }
 
 export function paintScannedProduct (product) {
-  console.log(product)
   let html = '<div class="gr-mediaBox   ">\n' +
     '                        <img alt="coca cola" class=" product-image product-image"\n' +
     '                             src="' + product.image + '"/>\n' +

@@ -17,11 +17,15 @@ export const getProduct = async (req, res) => {
 }
 
 export const getImage = async (targetUrl) => {
-  let metadata = await scrape(targetUrl)
-  if (metadata && metadata.twitter && metadata.twitter.image) {
-    return metadata.twitter.image
+  try {
+    let metadata = await scrape(targetUrl)
+    if (metadata && metadata.twitter && metadata.twitter.image) {
+      return metadata.twitter.image
+    }
+    return ''
+  } catch (e) {
+    return ''
   }
-  return ''
 }
 
 export const getProducts = async (req, res) => {
