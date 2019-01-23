@@ -254,23 +254,7 @@ export function initScanner () {
   iptEl.addEventListener('change', function () {
     reader.decodeFileInMemory(this.files[0]).then(function (results) {
       if (results && results.length) {
-        showLoader()
-        fetch(`http://localhost:8080/api/products/${results[0].BarcodeText}`, {
-          credentials: 'include'
-        }).then(response => response.json())
-          .then(data => {
-              hideLoader()
-              if (data.product_name) {
-                paintScannedProduct(data)
-              } else {
-                throw new Error('Product does not exist in our database')
-              }
-            }
-          )
-          .catch(function () {
-            hideLoader()
-            alert('Product does not exist in our database')
-          })
+        fetchProduct(results[0].BarcodeText)
       } else {
         alert('Code was not recognised')
       }
@@ -285,8 +269,11 @@ export function scan () {
   document.getElementById('uploadImage').click()
 }
 
-export function paintScannedProduct (product) {
-  let html = '<div class="gr-mediaBox   ">\n' +
+export function generateProductHtml (product, removeBtn) {
+  if (!product.product_name) {
+    return ''
+  }
+  return '<div class="gr-mediaBox   ">\n' +
     '                        <img alt="coca cola" class=" product-image product-image"\n' +
     '                             src="' + product.image + '"/>\n' +
     '                        <div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow">\n' +
@@ -299,9 +286,8 @@ export function paintScannedProduct (product) {
     '                                    class=" --authorBadge"></span></div>\n' +
     '                            <div class="product-additionalContent"><a href="#">' +
     '                                <div>\n' +
-    '                                    <button class="gr-button gr-button--quiet u-marginTopTiny gr-button--small">Add\n' +
-    '                                        to\n' +
-    '                                        favourites\n' +
+    '                                    <button data-id="' + product._id + '" class="' + (removeBtn ? 'remove_favourite' : 'save_favourite') + ' gr-button gr-button--quiet u-marginTopTiny gr-button--small">' +
+    (removeBtn ? 'Remove from' : 'Add to') + ' favourites' +
     '                                    </button>\n' +
     '                                </div>\n' +
     '                                <div>\n' +
@@ -312,6 +298,84 @@ export function paintScannedProduct (product) {
     '                            </div>\n' +
     '                        </div>\n' +
     '                    </div>'
+}
+
+export function paintScannedProduct (product) {
+  let html = generateProductHtml(product)
   let productElement = document.getElementById('scanned-product')
   productElement.innerHTML = html
+}
+
+export function paintFavouriteProducts (products) {
+  let html = products.map(product => generateProductHtml(product, true))
+  let productElement = document.getElementById('my_favourites')
+  productElement.innerHTML = html
+}
+
+export const getLocalStorageFavs = () => {
+  let favs = localStorage.getItem('favourites')
+  if (favs) {
+    return favs.split(',')
+  }
+  return []
+}
+export const saveLocalStorageFav = (id) => {
+  let favs = getLocalStorageFavs()
+  if (!favs.includes(id.toString())) {
+    favs.push(id)
+    localStorage.setItem('favourites', favs.join(','))
+  }
+  return favs
+}
+export const removeLocalStorageFav = (id) => {
+  let favs = getLocalStorageFavs()
+  let newFavs = []
+  for (let i = 0; i < favs.length; i++) {
+    if (id.toString() !== favs[i]) {
+      newFavs.push(favs[i])
+    }
+  }
+  localStorage.setItem('favourites', newFavs.join(','))
+  return newFavs
+}
+
+export function hasClass (element, className) {
+  return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1
+}
+
+export function fetchProduct (code) {
+  showLoader()
+  fetch(`http://localhost:8080/api/products/${code}`, {
+    credentials: 'include'
+  }).then(response => response.json())
+    .then(data => {
+        hideLoader()
+        console.log(data.product_name)
+        // if (data.product_name) {
+        paintScannedProduct(data)
+        // } else {
+        //   throw new Error('Product does not exist in our database')
+        // }
+      }
+    )
+    .catch(function (err) {
+      console.log(err)
+      hideLoader()
+      alert('Product does not exist in our database')
+    })
+}
+
+export function fetchFavourites (ids) {
+  showLoader()
+  fetch(`http://localhost:8080/api/products?ids=${ids}`, {
+    credentials: 'include'
+  }).then(response => response.json())
+    .then(data => {
+        hideLoader()
+        paintFavouriteProducts(data)
+      }
+    )
+    .catch(function () {
+      hideLoader()
+    })
 }
