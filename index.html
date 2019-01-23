@@ -10,18 +10,18 @@
         function facebookLogin(){
             FB.init({  
                 appId:'807493089601389',
+                cookie: true,
                 xfbml: true,
                 version: 'v2.8'
             })
 
             FB.login(function(res) {
-                document.cookie(`goreToken=${res.authResponse.accessToken};;path=/`)
-            })
-        }
+                document.cookie=`goreToken=${res.authResponse.accessToken};;path=/`
 
-        function getFbInfo(){
-            FB.api('/me',res => {
-                return `Welcome, ${res.name}`
+                FB.api('/me',res => {
+                    document.cookie=`userId=${res.id};;path=/`
+                    document.cookie=`userName=${res.name};;path=/`
+                })
             })
         }
     </script>
@@ -47,11 +47,11 @@
 
         <nav class="menu__nav">
             <ul class="menu__list">
+                <li onclick="facebookLogin()" class="menu__item"><span>01</span>Sign in</li>
                 <li class="menu__item"><a class="menu__link" href="index.html"><span>01</span>Home</a></li>
-                <li onclick="facebookLogin()" class="menu__item"><a class="menu__link" href="javascript:void(0);"><span>02</span>Sign in</a></li>
-                <li class="menu__item"><a class="menu__link" href="scan.html"><span>03</span>Scan products</a></li>
-                <li class="menu__item"><a class="menu__link" href="recommend.html"><span>04</span>Get recommandations</a></li>
-                <li class="menu__item"><a class="menu__link" href="./htmlDocs/index.html"><span>05</span>Scholarly HTML</a></li>
+                <li class="menu__item"><a class="menu__link" href="scan.html"><span>02</span>Scan products</a></li>
+                <li class="menu__item"><a class="menu__link" href="recommend.html"><span>03</span>Get recommandations</a></li>
+                <li class="menu__item"><a class="menu__link" href="./htmlDocs/index.html"><span>04</span>Scholarly HTML</a></li>
             </ul>
         </nav>
     </div>
