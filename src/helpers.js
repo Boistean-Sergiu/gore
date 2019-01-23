@@ -284,7 +284,7 @@ export function generateProductHtml (product, removeBtn) {
     '                                     \n' +
     '                                    class="product-manufacturerLink  --naked">' + product.brands + '</div><span\n' +
     '                                    class=" --authorBadge"></span></div>\n' +
-    '                            <div class="product-additionalContent"><a href="#">' +
+    '                            <div class="product-additionalContent">' +
     '                                <div>\n' +
     '                                    <button data-id="' + product._id + '" class="' + (removeBtn ? 'remove_favourite' : 'save_favourite') + ' gr-button gr-button--quiet u-marginTopTiny gr-button--small">' +
     (removeBtn ? 'Remove from' : 'Add to') + ' favourites' +
