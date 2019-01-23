@@ -8,18 +8,23 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script>
+ function facebookLogin(){
+            FB.init({  
+                appId:'807493089601389',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.8'
+            })
 
-      function facebookLogin () {
-        FB.init({
-          appId: '807493089601389',
-          xfbml: true,
-          version: 'v2.8'
-        })
+            FB.login(function(res) {
+                document.cookie=`goreToken=${res.authResponse.accessToken};;path=/`
 
-        FB.login(function (res) {
-          document.cookie(`goreToken=${res.authResponse.accessToken};;path=/`)
-        })
-      }
+                FB.api('/me',res => {
+                    document.cookie=`userId=${res.id};;path=/`
+                    document.cookie=`userName=${res.name};;path=/`
+                })
+            })
+        }
     </script>
 </head>
 
