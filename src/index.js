@@ -1,14 +1,12 @@
 import 'babel-polyfill'
 import {
   onReady,
-  initZBRangeSlider,
-  changeCheckbox,
-  categoriesCheckboxHandler,
+  initQuantitySlider,
   initScanner,
   scan,
   hasClass,
   saveLocalStorageFav,
-  fetchFavourites, getLocalStorageFavs, removeLocalStorageFav
+  fetchFavourites, getLocalStorageFavs, removeLocalStorageFav, getRecommendations
 } from './helpers'
 
 onReady(async () => {
@@ -23,14 +21,14 @@ onReady(async () => {
       dairies: true,
       meats: true,
       cereals: true,
-    }
+    },
+    country: 'All'
   }
   //initPriceSlider('price-slider', 'price-slider-label', filters)
   let quantitySlider = document.getElementById('range-slider')
   if (quantitySlider) {
     initQuantitySlider('range-slider', 'quantity-slider-label', filters)
   }
-  categoriesCheckboxHandler(filters)
 
   let scanButton = document.getElementById('scan-product')
   if (scanButton) {
@@ -45,4 +43,14 @@ onReady(async () => {
       fetchFavourites(removeLocalStorageFav(e.target.dataset.id))
     }
   })
+  document.addEventListener('change', function (e) {
+    if (hasClass(e.target, 'category-checkbox')) {
+      filters.categories[e.target.dataset.category] = !filters.categories[e.target.dataset.category]
+      getRecommendations(filters)
+    } else if (hasClass(e.target, 'countries_select')) {
+      filters.country = e.target.value
+      getRecommendations(filters)
+    }
+  })
 })
+

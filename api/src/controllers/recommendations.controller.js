@@ -1,9 +1,19 @@
 import Product from '../models/mongo/ProductModel'
+import { getImage } from './products.controller'
 
 export const getRecommendations = async (req, res) => {
   try {
-    let product = await Product.find().limit(5).exec()
-    return res.json(product)
+    let products = await Product.find().limit(5).exec()
+    if (products) {
+      products = JSON.parse(JSON.stringify(products))
+      for (let i = 0; i < products.length; i++) {
+        if (!products[i].image) {
+          products[i].image = await getImage(`https://world.openfoodfacts.org/product/${products[i]._id}`)
+          await Product.updateOne({_id: {$regex: products[i]._id}}, {image: products[i].image}, {upsert: true}, () => {})
+        }
+      }
+    }
+    return res.json(products)
   } catch (err) {
     console.log(err)
     return res.status(err.api.error.status).json(err)
