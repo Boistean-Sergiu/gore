@@ -6,7 +6,10 @@ export const getProduct = async (req, res) => {
     let product = await Product.findOne({_id: {$regex: req.params.id}}).exec()
     if (product) {
       product = product.toObject()
-      product.image = await getImage(`https://world.openfoodfacts.org/product/${product._id}`)
+      if (!product.image) {
+        product.image = await getImage(`https://world.openfoodfacts.org/product/${product._id}`)
+        await Product.updateOne({_id: {$regex: product._id}}, product, {upsert: true}, () => {})
+      }
       return res.json(product)
     }
   } catch (err) {
@@ -17,25 +20,37 @@ export const getProduct = async (req, res) => {
 }
 
 export const getImage = async (targetUrl) => {
-  let metadata = await scrape(targetUrl)
-  if (metadata && metadata.twitter && metadata.twitter.image) {
-    return metadata.twitter.image
+  try {
+    let metadata = await scrape(targetUrl)
+    if (metadata && metadata.twitter && metadata.twitter.image) {
+      return metadata.twitter.image
+    }
+    return ''
+  } catch (e) {
+    return ''
   }
-  return ''
 }
 
 export const getProducts = async (req, res) => {
   try {
     let products
-    if (req.query.ids) {
+    if (req.query.ids !== undefined) {
       let ids = await req.query.ids.split(',').map(parseFloat)
-      console.log(ids)
       products = await Product.find({_id: {$in: ids}}).exec()
     } else {
       products = await Product.find().limit(20).exec()
     }
+    if (products) {
+      products = JSON.parse(JSON.stringify(products))
+      for (let i = 0; i < products.length; i++) {
+        if (!products[i].image) {
+          products[i].image = await getImage(`https://world.openfoodfacts.org/product/${products[i]._id}`)
+        }
+      }
+    }
     return res.json(products)
   } catch (err) {
+    console.log(err)
     return res.status(err.api.error.status).json(err)
   }
 }

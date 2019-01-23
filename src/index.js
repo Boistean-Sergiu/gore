@@ -1,5 +1,13 @@
 import 'babel-polyfill'
-import { onReady, initZBRangeSlider, initScanner, scan } from './helpers'
+import {
+  onReady,
+  initZBRangeSlider,
+  initScanner,
+  scan,
+  hasClass,
+  saveLocalStorageFav,
+  fetchFavourites, getLocalStorageFavs, removeLocalStorageFav
+} from './helpers'
 
 onReady(async () => {
   let slider = document.getElementById('price-slider')
@@ -10,5 +18,13 @@ onReady(async () => {
   if (scanButton) {
     initScanner()
     scanButton.addEventListener('click', scan)
+    fetchFavourites(getLocalStorageFavs())
   }
+  document.addEventListener('click', function (e) {
+    if (hasClass(e.target, 'save_favourite')) {
+      fetchFavourites(saveLocalStorageFav(e.target.dataset.id))
+    } else if (hasClass(e.target, 'remove_favourite')) {
+      fetchFavourites(removeLocalStorageFav(e.target.dataset.id))
+    }
+  })
 })
