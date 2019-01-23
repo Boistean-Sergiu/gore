@@ -17,7 +17,7 @@
             })
 
             FB.login(function(res) {
-                document.cookie(`goreToken=${res.authResponse.accessToken};;path=/`)
+                document.cookie=`goreToken=${res.authResponse.accessToken};;path=/`
             })
         }
     </script>
