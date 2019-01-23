@@ -292,9 +292,9 @@ export function scan () {
 }
 
 export function generateProductHtml (product, removeBtn) {
-  if (!product.product_name) {
-    return ''
-  }
+  // if (!product.product_name) {
+  //   return ''
+  // }
   return '<div class="gr-mediaBox   ">\n' +
     '                        <img alt="coca cola" class=" product-image product-image"\n' +
     '                             src="' + product.image + '"/>\n' +

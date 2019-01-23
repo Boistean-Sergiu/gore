@@ -27,7 +27,7 @@ app.use(express.json())       // to support JSON-encoded bodies
 app.use(helmet())
 // 3rd party middleware
 app.use(cors({
-  origin: ['http://localhost:63342', 'http://192.168.43.200'],
+  origin: ['http://localhost:63342', 'http://192.168.43.200', 'http://localhost'],
   credentials: true
 }))
 // static files

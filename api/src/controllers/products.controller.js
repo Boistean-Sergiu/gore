@@ -45,6 +45,7 @@ export const getProducts = async (req, res) => {
       for (let i = 0; i < products.length; i++) {
         if (!products[i].image) {
           products[i].image = await getImage(`https://world.openfoodfacts.org/product/${products[i]._id}`)
+          await Product.updateOne({_id: {$regex: products[i]._id}}, products[i], {upsert: true}, () => {})
         }
       }
     }
