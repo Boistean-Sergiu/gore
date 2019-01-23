@@ -3,6 +3,18 @@ export const onReady = (code) => {
     code()
   })
 }
+let hideLoader = () => {
+  let loader = document.getElementById('loader')
+  if (loader) {
+    loader.style.display = 'none'
+  }
+}
+let showLoader = () => {
+  let loader = document.getElementById('loader')
+  if (loader) {
+    loader.style.display = 'block'
+  }
+}
 // THIS IS THE RANGE SLIDER LOGIC DO NOT CHANGE !!
 let ZBRangeSlider = function (id) {
   let self = this
@@ -242,10 +254,12 @@ export function initScanner () {
   iptEl.addEventListener('change', function () {
     reader.decodeFileInMemory(this.files[0]).then(function (results) {
       if (results && results.length) {
+        showLoader()
         fetch(`http://localhost:8080/api/products/${results[0].BarcodeText}`, {
           credentials: 'include'
         }).then(response => response.json())
           .then(data => {
+              hideLoader()
               if (data.product_name) {
                 paintScannedProduct(data)
               } else {
@@ -254,6 +268,7 @@ export function initScanner () {
             }
           )
           .catch(function () {
+            hideLoader()
             alert('Product does not exist in our database')
           })
       } else {

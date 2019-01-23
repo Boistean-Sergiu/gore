@@ -8,18 +8,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script>
-        
-        function facebookLogin(){
-            FB.init({  
-                appId:'807493089601389',
-                xfbml: true,
-                version: 'v2.8'
-            })
 
-            FB.login(function(res) {
-                document.cookie(`goreToken=${res.authResponse.accessToken};;path=/`)
-            })
-        }
+      function facebookLogin () {
+        FB.init({
+          appId: '807493089601389',
+          xfbml: true,
+          version: 'v2.8'
+        })
+
+        FB.login(function (res) {
+          document.cookie(`goreToken=${res.authResponse.accessToken};;path=/`)
+        })
+      }
     </script>
 </head>
 
@@ -45,7 +45,7 @@
             <input id="uploadImage" type="file" accept="image/bmp,image/jpeg,image/png,image/gif" style="display:none">
             <button class="gr-button gr-button--quiet u-marginTopTiny gr-button--small" id="scan-product">Scan new
                 product
-            </button>   
+            </button>
         </div>
         <div class="flex-container">
             <div class="left-side">
@@ -151,6 +151,9 @@
             </div>
         </div>
     </div>
+</div>
+<div id="loader" class="loader">
+    <img src="img/loader.svg"/>
 </div>
 <script src="https://demo.dynamsoft.com/dbr_wasm/js/dbr-6.4.1.1.min.js"></script>
 <script src="dist/index.js"></script>
