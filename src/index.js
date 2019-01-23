@@ -1,5 +1,15 @@
 import 'babel-polyfill'
-import { onReady, initQuantitySlider, initScanner, changeCheckbox, scan, categoriesCheckboxHandler } from './helpers'
+import {
+  onReady,
+  initZBRangeSlider,
+  changeCheckbox,
+  categoriesCheckboxHandler,
+  initScanner,
+  scan,
+  hasClass,
+  saveLocalStorageFav,
+  fetchFavourites, getLocalStorageFavs, removeLocalStorageFav
+} from './helpers'
 
 onReady(async () => {
   let filters = {
@@ -26,5 +36,13 @@ onReady(async () => {
   if (scanButton) {
     initScanner()
     scanButton.addEventListener('click', scan)
+    fetchFavourites(getLocalStorageFavs())
   }
+  document.addEventListener('click', function (e) {
+    if (hasClass(e.target, 'save_favourite')) {
+      fetchFavourites(saveLocalStorageFav(e.target.dataset.id))
+    } else if (hasClass(e.target, 'remove_favourite')) {
+      fetchFavourites(removeLocalStorageFav(e.target.dataset.id))
+    }
+  })
 })

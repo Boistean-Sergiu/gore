@@ -7,6 +7,20 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+        
+        function facebookLogin(){
+            FB.init({  
+                appId:'807493089601389',
+                xfbml: true,
+                version: 'v2.8'
+            })
+
+            FB.login(function(res) {
+                document.cookie(`goreToken=${res.authResponse.accessToken};;path=/`)
+            })
+        }
+    </script>
 </head>
 
 <body>

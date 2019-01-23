@@ -6,6 +6,25 @@
     <title>GORE APP</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+        function facebookLogin(){
+            FB.init({  
+                appId:'807493089601389',
+                xfbml: true,
+                version: 'v2.8'
+            })
+
+            FB.login(function(res) {
+                document.cookie(`goreToken=${res.authResponse.accessToken};;path=/`)
+            })
+        }
+
+        function getFbInfo(){
+            FB.api('/me',res => {
+                return `Welcome, ${res.name}`
+            })
+        }
+    </script>
 </head>
 
 <body>
@@ -13,7 +32,7 @@
         <div class="header__wrapper">
             <h1 class="header__title logo"><span>Gore</span></h1>
             <h2 class="header__subtitle">best goods web recommender</h2>
-            <a href="javascript:void(0);" class="button button--transparent header__button">Login</a>
+            <button onclick="facebookLogin()" href="javascript:void(0);" class="button button--transparent header__button">Login</butt>
         </div>
     </header>
 
@@ -29,8 +48,8 @@
         <nav class="menu__nav">
             <ul class="menu__list">
                 <li class="menu__item"><a class="menu__link" href="index.html"><span>01</span>Home</a></li>
-                <li class="menu__item"><a class="menu__link" href="javascript:void(0);"><span>03</span>Sign in</a></li>
-                <li class="menu__item"><a class="menu__link" href="scan.html"><span>04</span>Scan products</a></li>
+                <li onclick="facebookLogin()" class="menu__item"><a class="menu__link" href="javascript:void(0);"><span>02</span>Sign in</a></li>
+                <li class="menu__item"><a class="menu__link" href="scan.html"><span>03</span>Scan products</a></li>
                 <li class="menu__item"><a class="menu__link" href="recommend.html"><span>04</span>Get recommandations</a></li>
                 <li class="menu__item"><a class="menu__link" href="./htmlDocs/index.html"><span>05</span>Scholarly HTML</a></li>
             </ul>
@@ -103,6 +122,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js" integrity="sha256-L/S5mZS8SPJVWoKym3Zwgf2f3/s3X3MaZ7QBA9HdnN8="
         crossorigin="anonymous"></script>
     <script src="dist/index.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js" asp-append-version="true"></script>
+    <script src="src/index.js"></script>
     <script type="application/ld+json">
         {
             "@context": "http://schema.org/",
