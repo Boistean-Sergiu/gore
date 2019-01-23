@@ -51,7 +51,8 @@
     "redis": "^2.8.0",
     "redis-server": "^1.2.0",
     "reqclient": "^2.4.0",
-    "request": "^2.87.0"
+    "request": "^2.87.0",
+    "html-metadata": "^1.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

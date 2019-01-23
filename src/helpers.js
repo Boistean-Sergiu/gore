@@ -213,22 +213,66 @@ let ZBRangeSlider = function (id) {
   touchLeft.addEventListener('touchstart', onStart)
   touchRight.addEventListener('touchstart', onStart)
 }
-export const initZBRangeSlider = (id, label) => {
-  let newRangeSlider = new ZBRangeSlider(id)
-  console.log('init')
-  newRangeSlider.onChange = function (min, max) {
-    console.log('init')
 
-    console.log(min, max, this)
+export const initPriceSlider = (id, label, filters) => {
+  let newRangeSlider = new ZBRangeSlider(id)
+  newRangeSlider.onChange = (min, max) => {
     document.getElementById(label).innerHTML = 'Price   Min: ' + parseInt(min, 10) + ' Max: ' + parseInt(max, 10)
   }
 
-  newRangeSlider.didChanged = function (min, max) {
-    console.log('init3')
-
-    console.log(min, max, this)
+  newRangeSlider.didChanged = (min, max) => {
+    filters.minPrice = min
+    filters.maxPrice = max
+    console.log(filters)
     document.getElementById(label).innerHTML = 'Price  Min: ' + parseInt(min, 10) + ' Max: ' + parseInt(max, 10)
+    getRecommendations(filters)
   }
+}
+
+export const initQuantitySlider = (id, label, filters) => {
+  let newRangeSlider = new ZBRangeSlider(id)
+  document.getElementById(label).innerHTML = 'Quantity 0g - 5000g'
+
+  newRangeSlider.onChange = (min, max) => {
+    document.getElementById(label).innerHTML = 'Quantity ' + parseInt(min, 10) + 'g' + ' - ' + parseInt(max, 10) + 'g'
+  }
+
+  newRangeSlider.didChanged = (min, max) => {
+    console.log(min)
+    filters.minQuantity = min
+    filters.maxQuantity = max
+    console.log(filters)
+    document.getElementById(label).innerHTML = 'Quantity '+ parseInt(min, 10) + 'g' + ' - ' + parseInt(max, 10) + 'g'
+    getRecommendations(filters)
+  }
+}
+
+export const categoriesCheckboxHandler = ( filters ) => {
+  let el = document.getElementById('categories_checkbox');
+  let tops = el.getElementsByTagName('input');
+
+  for (let i=0, len=tops.length; i<len; i++) {
+    if ( tops[i].type === 'checkbox' ) {
+    console.log(tops[i].checked   )
+      tops[i].onchange = updateFilter(tops[i], filters);
+    }
+  }
+}
+
+function updateFilter(category, filters) {
+  filters.categories[category] = !!category.checked;
+  console.log(filters)
+}
+
+export const getRecommendations = (filters) => {
+  let params = Object.entries(filters).map(([key, val]) => `${key}=${val}`).join('&')
+  fetch(`http://localhost:8080/api/recommendations?${params}`, {
+    credentials: 'include'
+  }).then(response => response.json())
+    .then(data => { paintScannedProduct(data) })
+    .catch(function () {
+      alert('Product does not exist in our database')
+    })
 }
 
 export function initScanner () {

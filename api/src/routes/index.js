@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import mongoose from '../mongoose'
 import * as ProductsController from '../controllers/products.controller'
+import * as RecommendationsController from '../controllers/recommendations.controller'
 import { catchErrors } from '../helpers/errorHelpers'
 
 const api = Router()
@@ -10,4 +11,5 @@ mongoose.once('open', function () {
 })
 api.get('/products', catchErrors(ProductsController.getProducts))
 api.get('/products/:id', catchErrors(ProductsController.getProduct))
+api.get('/recommendations', catchErrors(RecommendationsController.getRecommendations))
 export default api
