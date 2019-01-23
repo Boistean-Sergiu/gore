@@ -6,7 +6,10 @@ export const getProduct = async (req, res) => {
     let product = await Product.findOne({_id: {$regex: req.params.id}}).exec()
     if (product) {
       product = product.toObject()
-      product.image = await getImage(`https://world.openfoodfacts.org/product/${product._id}`)
+      if (!product.image) {
+        product.image = await getImage(`https://world.openfoodfacts.org/product/${product._id}`)
+        await Product.updateOne({_id: {$regex: product._id}}, product, {upsert: true}, () => {})
+      }
       return res.json(product)
     }
   } catch (err) {
@@ -40,7 +43,9 @@ export const getProducts = async (req, res) => {
     if (products) {
       products = JSON.parse(JSON.stringify(products))
       for (let i = 0; i < products.length; i++) {
-        products[i].image = await getImage(`https://world.openfoodfacts.org/product/${products[i]._id}`)
+        if (!products[i].image) {
+          products[i].image = await getImage(`https://world.openfoodfacts.org/product/${products[i]._id}`)
+        }
       }
     }
     return res.json(products)
