@@ -51,8 +51,8 @@
         <div class="flex-container">
             <div class="left-side filters">
                 <h3 class="title">Filters</h3>
-                <h4 class="categories">Categories</h4>
-                <div id="categories_checkbox">
+                <div id="categories_checkbox" class="u-paddingBottomMedium">
+                    <h4 class="categories">Categories</h4>
                     <div>
                         <input type="checkbox" id="food-checkbox" data-category="food" class="category-checkbox"
                                checked/><label
@@ -89,11 +89,74 @@
                             for="cereals-checkbox">Cereals</label>
                     </div>
                 </div>
-                <div>
+                <div class="u-paddingBottomMedium">
+                    <label for="countries_select">Country</label>
                     <select class="countries_select" id="countries_select">
                         <option name="All" selected value="All">All</option>
                         <option name="France" value="France">France</option>
+                        <option name="USA" value="USA">USA</option>
+                        <option name="Germany" value="Germany">Germany</option>
+                        <option name="Switzerland" value="Switzerland">Switzerland</option>
+                        <option name="Belgium" value="Belgium">Belgium</option>
+                        <option name="Spain" value="Spain">Spain</option>
+                        <option name="UK" value="UK">UK</option>
+                        <option name="Canada" value="Canada">Canada</option>
                         <option name="Italy" value="Italy">Italy</option>
+                        <option name="Mexico" value="Mexico">Mexico</option>
+                        <option name="Australia" value="Australia">Australia</option>
+                        <option name="Russia" value="Russia">Russia</option>
+                        <option name="Netherlands" value="Netherlands">Netherlands</option>
+                        <option name="Sweden" value="Sweden">Sweden</option>
+                        <option name="Portugal" value="Portugal">Portugal</option>
+                        <option name="Austria" value="Austria">Austria</option>
+                    </select>
+                </div>
+                <div class="u-paddingBottomMedium">
+                    <label for="nutrition_select">Nutrition grade</label>
+                    <select class="nutrition_select" id="nutrition_select">
+                        <option name="All" selected value="All">All</option>
+                        <option name="A" value="A">A</option>
+                        <option name="B" value="B">B</option>
+                        <option name="C" value="C">C</option>
+                        <option name="D" value="D">D</option>
+                        <option name="E" value="E">E</option>
+                    </select>
+                </div>
+                <h4>Nutrient levels</h4>
+                <div>
+                    <label for="fat_select">Fat</label>
+                    <select class="fat_select" id="fat_select">
+                        <option name="All" selected value="All">All</option>
+                        <option name="Low" value="Low">Low</option>
+                        <option name="Moderate" value="Moderate">Moderate</option>
+                        <option name="High" value="High">High</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="salt_select">Salt</label>
+                    <select class="salt_select" id="salt_select">
+                        <option name="All" selected value="All">All</option>
+                        <option name="Low" value="Low">Low</option>
+                        <option name="Moderate" value="Moderate">Moderate</option>
+                        <option name="High" value="High">High</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="sugar_select">Sugar</label>
+                    <select class="sugar_select" id="sugar_select">
+                        <option name="All" selected value="All">All</option>
+                        <option name="Low" value="Low">Low</option>
+                        <option name="Moderate" value="Moderate">Moderate</option>
+                        <option name="High" value="High">High</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="sfat_select">Saturated-fat</label>
+                    <select class="sfat_select" id="sfat_select">
+                        <option name="All" selected value="All">All</option>
+                        <option name="Low" value="Low">Low</option>
+                        <option name="Moderate" value="Moderate">Moderate</option>
+                        <option name="High" value="High">High</option>
                     </select>
                 </div>
                 <div>
