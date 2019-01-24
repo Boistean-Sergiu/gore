@@ -3,6 +3,7 @@ import { getImage } from './products.controller'
 
 export const getRecommendations = async (req, res) => {
   try {
+    console.log(req.headers)
     let query = {}
     let {
       categories, country, nutrition, fat,
@@ -36,8 +37,16 @@ export const getRecommendations = async (req, res) => {
       }
       query = dinamicQuery
     }
-    console.log(JSON.stringify(query))
     let products = await Product.find(query).limit(5).exec()
+    if (products) {
+      products = JSON.parse(JSON.stringify(products))
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].image === undefined) {
+          products[i].image = await getImage(`https://world.openfoodfacts.org/product/${products[i]._id}`)
+          await Product.updateOne({code: {$regex: products[i].code}}, {image: products[i].image}, {upsert: true}, () => {})
+        }
+      }
+    }
     return res.json(products)
   } catch (err) {
     console.log(err)

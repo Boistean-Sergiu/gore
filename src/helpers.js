@@ -304,7 +304,7 @@ export function generateProductHtml (product, removeBtn) {
   // }
   return '<div class="gr-mediaBox   ">\n' +
     '                        <img alt="coca cola" class=" product-image product-image"\n' +
-    '                             src="' + product.image + '"/>\n' +
+    '                             src="' + product.image + '" onerror="this.onerror=null;this.src=\'img/404.jpg\';"/>\n' +
     '                        <div class="gr-mediaBox__desc gr-mediaBox__desc--clearfixOverflow">\n' +
     '                            <div class="product-name"><a\n' +
     '                                    target="_blank" href="' + (product.sources && product.sources.length && product.sources[0].url ? product.sources[0].url : '') + '"\n' +
