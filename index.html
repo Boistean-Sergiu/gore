@@ -16,14 +16,26 @@
             })
 
             FB.login(function(res) {
-                document.cookie=`goreToken=${res.authResponse.accessToken};;path=/`
+                var d = new Date();
+                d.setTime(d.getTime() + (24 * 60 * 60 * 1000));
+                let expires = `expires=${d.toUTCString}`
+                document.cookie=`goreToken=${res.authResponse.accessToken};${expires};path=/`
 
-                FB.api('/me',res => {
-                    document.cookie=`userId=${res.id};;path=/`
-                    document.cookie=`userName=${res.name};;path=/`
+                FB.api('/me',response => {
+                    document.cookie=`userId=${response.id};${expires};path=/`
+                    document.cookie=`userName=${response.name};${expires};path=/`
+                    let signIn = document.querySelector("ul.menu__list > li.menu__item:first-child > a.menu__link:first-child")
+                    if (signIn) {
+                        signIn.parentNode.removeChild(signIn)
+                    }
+                    let secondSingInButton = document.querySelector("header.header .header__wrapper .button.header__button")
+                    if (secondSingInButton) {
+                        secondSingInButton.parentNode.removeChild(secondSingInButton)
+                    }
                 })
             })
         }
+
     </script>
 </head>
 
@@ -47,7 +59,7 @@
 
         <nav class="menu__nav">
             <ul class="menu__list">
-                <li onclick="facebookLogin()" class="menu__item"><span>01</span>Sign in</li>
+                <li onclick="facebookLogin()" class="menu__item"><a class="menu__link" href="#">Sign in</a></li>
                 <li class="menu__item"><a class="menu__link" href="index.html"><span>01</span>Home</a></li>
                 <li class="menu__item"><a class="menu__link" href="scan.html"><span>02</span>Scan products</a></li>
                 <li class="menu__item"><a class="menu__link" href="recommend.html"><span>03</span>Get recommandations</a></li>
@@ -121,6 +133,35 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js" integrity="sha256-L/S5mZS8SPJVWoKym3Zwgf2f3/s3X3MaZ7QBA9HdnN8="
         crossorigin="anonymous"></script>
+        <script>
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                        if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+            let cookieName = getCookie("userName")
+            if (cookieName !== "") {
+                let signIn = document.querySelector("ul.menu__list > li.menu__item:first-child > a.menu__link:first-child")
+                if (signIn) {
+                    signIn.parentNode.removeChild(signIn)
+                }
+                let secondSingInButton = document.querySelector("header.header .header__wrapper .button.header__button")
+                if (secondSingInButton) {
+                    secondSingInButton.parentNode.removeChild(secondSingInButton)
+                }
+            }
+
+</script>
     <script src="dist/index.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js" asp-append-version="true"></script>
     <script src="src/index.js"></script>

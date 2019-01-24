@@ -1,75 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>GORE APP</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script>
- function facebookLogin(){
-            FB.init({  
-                appId:'807493089601389',
-                cookie: true,
-                xfbml: true,
-                version: 'v2.8'
-            })
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script></script>
+  </head>
 
-            FB.login(function(res) {
-                document.cookie=`goreToken=${res.authResponse.accessToken};;path=/`
-
-                FB.api('/me',res => {
-                    document.cookie=`userId=${res.id};;path=/`
-                    document.cookie=`userName=${res.name};;path=/`
-                })
-            })
-        }
-    </script>
-</head>
-
-<body>
-<div class="wrapper">
-    <header class="header menu-bar">
+  <body>
+    <div class="wrapper">
+      <header class="header menu-bar">
         <h1 class="logo logo--small">
-            <a href="index.html"><span>Gore</span></a></h1>
+          <a href="index.html"><span>Gore</span></a>
+        </h1>
         <ul class="menu-navbar">
-            <li><a href="index.html">Home</a></li>
-            <li class="active"><a href="javscript:void(0);">Scan products</a></li>
-            <li><a href="recommend.html">Get recommandations</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="javscript:void(0);">Scan products</a></li>
+          <li><a href="recommend.html">Get recommandations</a></li>
         </ul>
         <div class="user-nav">
-            <strong class="user-nav__name">User</strong>
-            <div class="user-nav__avatar">
-                <img src="img/user.jpeg" alt="Logged User">
-            </div>
+          <strong class="user-nav__name">User</strong>
+          <div class="user-nav__avatar">
+            <img src="img/user.jpeg" alt="Logged User" />
+          </div>
         </div>
-    </header>
-    <div class="landing-wrapper" style="margin-top: 6rem;">
+      </header>
+      <div class="landing-wrapper" style="margin-top: 6rem;">
         <div class="width-full">
-            <input id="uploadImage" type="file" accept="image/bmp,image/jpeg,image/png,image/gif" style="display:none">
-            <button class="gr-button gr-button--quiet u-marginTopTiny gr-button--small" id="scan-product">Scan new
-                product
-            </button>
+          <input
+            id="uploadImage"
+            type="file"
+            accept="image/bmp,image/jpeg,image/png,image/gif"
+            style="display:none"
+          />
+          <button
+            class="gr-button gr-button--quiet u-marginTopTiny gr-button--small"
+            id="scan-product"
+          >
+            Scan new product
+          </button>
         </div>
         <div class="flex-container">
-            <div class="left-side">
-                <h4 class="title">Last scanned</h4>
-                <div class="u-paddingBottomMedium" id="scanned-product">
-                </div>
-            </div>
-            <div class="right-side">
-                <h4 class="title">My favourites</h4>
-                <div id="my_favourites">
-                </div>
-            </div>
+          <div class="left-side">
+            <h4 class="title">Last scanned</h4>
+            <div class="u-paddingBottomMedium" id="scanned-product"></div>
+          </div>
+          <div class="right-side">
+            <h4 class="title">My favourites</h4>
+            <div id="my_favourites"></div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<div id="loader" class="loader">
-    <img src="img/loader.svg"/>
-</div>
-<script src="https://demo.dynamsoft.com/dbr_wasm/js/dbr-6.4.1.1.min.js"></script>
-<script src="dist/index.js"></script>
-</body>
+    <div id="loader" class="loader"><img src="img/loader.svg" /></div>
+    <script>
+      function facebookLogin() {
+        FB.init({
+          appId: '807493089601389',
+          cookie: true,
+          xfbml: true,
+          version: 'v2.8'
+        });
+
+        FB.login(function(res) {
+          var d = new Date();
+          d.setTime(d.getTime() + 24 * 60 * 60 * 1000);
+          let expires = `expires=${d.toUTCString}`;
+          document.cookie = `goreToken=${
+            res.authResponse.accessToken
+          };${expires};path=/`;
+
+          FB.api('/me', res => {
+            document.cookie = `userId=${res.id};${expires};path=/`;
+            document.cookie = `userName=${res.name};${expires};path=/`;
+            let nameInfo = document.querySelector('.user-nav .user-nav__name');
+            if (nameInfo) {
+              nameInfo.innerHTML = cookieName;
+            }
+          });
+        });
+      }
+      function getCookie(cname) {
+        var name = cname + '=';
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return '';
+      }
+      let cookieName = getCookie('userName');
+      if (cookieName !== '') {
+        let nameInfo = document.querySelector('.user-nav .user-nav__name');
+        if (nameInfo) {
+          nameInfo.innerHTML = cookieName;
+        }
+      } else {
+        let nameSpace = document.querySelector('.user-nav');
+        if (nameSpace) {
+          while (nameSpace.firstChild) {
+            nameSpace.removeChild(nameSpace.firstChild);
+          }
+          let loginButton = document.createElement('button');
+          loginButton.classList.add(
+            'button',
+            'button--transparent',
+            'header-button'
+          );
+          loginButton.onclick = function() {
+            facebookLogin();
+          };
+          loginButton.style.border = 'none';
+          loginButton.innerText = 'LOGIN';
+          nameSpace.appendChild(loginButton);
+        }
+      }
+    </script>
+    <script
+      src="http://connect.facebook.net/en_US/all.js"
+      asp-append-version="true"
+    ></script>
+    <script src="https://demo.dynamsoft.com/dbr_wasm/js/dbr-6.4.1.1.min.js"></script>
+    <script src="dist/index.js"></script>
+  </body>
 </html>

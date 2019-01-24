@@ -1,142 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>GORE APP</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
 
-      function facebookLogin () {
+  <body>
+    <div class="wrapper">
+      <header class="header menu-bar">
+        <h1 class="logo logo--small">
+          <a href="index.html"><span>Gore</span></a>
+        </h1>
+        <ul class="menu-navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="scan.html">Scan products</a></li>
+          <li class="active">
+            <a href="javscript:void(0);">Get recommandations</a>
+          </li>
+        </ul>
+        <div class="user-nav">
+          <strong class="user-nav__name">User</strong>
+          <div class="user-nav__avatar">
+            <img src="img/user.jpeg" alt="Logged User" />
+          </div>
+        </div>
+      </header>
+      <div class="landing-wrapper" style="margin-top: 6rem;">
+        <div class="flex-container">
+          <div class="left-side filters">
+            <h3 class="title">Filters</h3>
+            <h4 class="categories">Categories</h4>
+            <div id="categories_checkbox">
+              <div>
+                <input
+                  type="checkbox"
+                  id="food-checkbox"
+                  data-category="food"
+                  class="category-checkbox"
+                  checked
+                /><label for="food-checkbox">Food</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="snacks-checkbox"
+                  data-category="snacks"
+                  class="category-checkbox"
+                  checked
+                /><label for="snacks-checkbox">Snacks</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="beverages-checkbox"
+                  data-category="beverages"
+                  class="category-checkbox"
+                  checked
+                /><label for="beverages-checkbox">Beverages</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="sweets-checkbox"
+                  data-category="sweets"
+                  class="category-checkbox"
+                  checked
+                /><label for="sweets-checkbox">Sweets</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="dairies-checkbox"
+                  data-category="dairies"
+                  class="category-checkbox"
+                  checked
+                /><label for="dairies-checkbox">Dairies</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="meats-checkbox"
+                  data-category="meats"
+                  class="category-checkbox"
+                  checked
+                /><label for="meats-checkbox">Meats</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="cereals-checkbox"
+                  data-category="cereals"
+                  class="category-checkbox"
+                  checked
+                /><label for="cereals-checkbox">Cereals</label>
+              </div>
+            </div>
+            <div>
+              <select class="countries_select" id="countries_select">
+                <option name="All" selected value="All">All</option>
+                <option name="France" value="France">France</option>
+                <option name="Italy" value="Italy">Italy</option>
+              </select>
+            </div>
+            <div>
+              <div class="range-slider">
+                <div><label id="quantity-slider-label">Quantity</label></div>
+                <!-- data-min="-100" se-step="1" data-max="100"  -->
+                <div>
+                  <div
+                    id="range-slider"
+                    data-min="0"
+                    se-step="50"
+                    data-max="5000"
+                    data-min-value="0"
+                    data-max-value="5000"
+                    class="slider"
+                  >
+                    <div class="slider-touch-left"><span></span></div>
+                    <div class="slider-touch-right"><span></span></div>
+                    <div class="slider-line"><span></span></div>
+                  </div>
+                </div>
+                <div class="padding-30">
+                  <div class="stv-switch">
+                    <input
+                      class="stv-checkbox-switch"
+                      type="checkbox"
+                      id="fb_recom"
+                    />
+                    <label for="fb_recom"
+                      >Use facebook friends recommendations</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-side recommendations">
+            <h3 class="title">Recommendations</h3>
+            <div id="recommended-products"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="loader" class="loader"><img src="img/loader.svg" /></div>
+    <script>
+      function facebookLogin() {
         FB.init({
           appId: '807493089601389',
           cookie: true,
           xfbml: true,
           version: 'v2.8'
-        })
+        });
 
-        FB.login(function (res) {
-          document.cookie = `goreToken=${res.authResponse.accessToken};;path=/`
+        FB.login(function(res) {
+          var d = new Date();
+          d.setTime(d.getTime() + 24 * 60 * 60 * 1000);
+          let expires = `expires=${d.toUTCString}`;
+          document.cookie = `goreToken=${
+            res.authResponse.accessToken
+          };${expires};path=/`;
 
           FB.api('/me', res => {
-            document.cookie = `userId=${res.id};;path=/`
-            document.cookie = `userName=${res.name};;path=/`
-          })
-        })
+            document.cookie = `userId=${res.id};${expires};path=/`;
+            document.cookie = `userName=${res.name};${expires};path=/`;
+            let nameInfo = document.querySelector('.user-nav .user-nav__name');
+            if (nameInfo) {
+              nameInfo.innerHTML = cookieName;
+            }
+          });
+        });
+      }
+      function getCookie(cname) {
+        var name = cname + '=';
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return '';
+      }
+      let cookieName = getCookie('userName');
+      if (cookieName !== '') {
+        let nameInfo = document.querySelector('.user-nav .user-nav__name');
+        if (nameInfo) {
+          nameInfo.innerHTML = cookieName;
+        }
+      } else {
+        let nameSpace = document.querySelector('.user-nav');
+        if (nameSpace) {
+          while (nameSpace.firstChild) {
+            nameSpace.removeChild(nameSpace.firstChild);
+          }
+          let loginButton = document.createElement('button');
+          loginButton.classList.add(
+            'button',
+            'button--transparent',
+            'header-button'
+          );
+          loginButton.onclick = function() {
+            facebookLogin();
+          };
+          loginButton.style.border = 'none';
+          loginButton.innerText = 'LOGIN';
+          nameSpace.appendChild(loginButton);
+        }
       }
     </script>
-</head>
-
-<body>
-<div class="wrapper">
-    <header class="header menu-bar">
-        <h1 class="logo logo--small">
-            <a href="index.html"><span>Gore</span></a>
-        </h1>
-        <ul class="menu-navbar">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="scan.html">Scan products</a></li>
-            <li class="active"><a href="javscript:void(0);">Get recommandations</a></li>
-        </ul>
-        <div class="user-nav">
-            <strong class="user-nav__name">User</strong>
-            <div class="user-nav__avatar">
-                <img src="img/user.jpeg" alt="Logged User">
-            </div>
-        </div>
-    </header>
-    <div class="landing-wrapper" style="margin-top: 6rem;">
-        <div class="flex-container">
-            <div class="left-side filters">
-                <h3 class="title">Filters</h3>
-                <h4 class="categories">Categories</h4>
-                <div id="categories_checkbox">
-                    <div>
-                        <input type="checkbox" id="food-checkbox" data-category="food" class="category-checkbox"
-                               checked/><label
-                            for="food-checkbox">Food</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="snacks-checkbox" data-category="snacks" class="category-checkbox"
-                               checked/><label
-                            for="snacks-checkbox">Snacks</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="beverages-checkbox" data-category="beverages"
-                               class="category-checkbox" checked/><label
-                            for="beverages-checkbox">Beverages</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="sweets-checkbox" data-category="sweets" class="category-checkbox"
-                               checked/><label
-                            for="sweets-checkbox">Sweets</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="dairies-checkbox" data-category="dairies" class="category-checkbox"
-                               checked/><label
-                            for="dairies-checkbox">Dairies</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="meats-checkbox" data-category="meats" class="category-checkbox"
-                               checked/><label
-                            for="meats-checkbox">Meats</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="cereals-checkbox" data-category="cereals" class="category-checkbox"
-                               checked/><label
-                            for="cereals-checkbox">Cereals</label>
-                    </div>
-                </div>
-                <div>
-                    <select class="countries_select" id="countries_select">
-                        <option name="All" selected value="All">All</option>
-                        <option name="France" value="France">France</option>
-                        <option name="Italy" value="Italy">Italy</option>
-                    </select>
-                </div>
-                <div>
-                    <div class="range-slider">
-                        <div>
-                            <label id="quantity-slider-label">Quantity</label>
-                        </div>
-                        <!-- data-min="-100" se-step="1" data-max="100"  -->
-                        <div>
-                            <div id="range-slider" data-min="0" se-step="50" data-max="5000" data-min-value="0"
-                                 data-max-value="5000"
-                                 class="slider">
-                                <div class="slider-touch-left">
-                                    <span></span>
-                                </div>
-                                <div class="slider-touch-right">
-                                    <span></span>
-                                </div>
-                                <div class="slider-line">
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="padding-30">
-                            <div class="stv-switch">
-                                <input class='stv-checkbox-switch' type="checkbox" id="fb_recom"/>
-                                <label for="fb_recom">Use facebook friends recommendations</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="right-side recommendations">
-                <h3 class="title">Recommendations</h3>
-                <div id="recommended-products">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="loader" class="loader">
-    <img src="img/loader.svg"/>
-</div>
-<script src="dist/index.js"></script>
-</body>
+    <script
+      src="http://connect.facebook.net/en_US/all.js"
+      asp-append-version="true"
+    ></script>
+    <script src="dist/index.js"></script>
+  </body>
 </html>
