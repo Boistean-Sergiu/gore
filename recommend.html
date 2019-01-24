@@ -36,99 +36,123 @@
       </header>
       <div class="landing-wrapper" style="margin-top: 6rem;">
         <div class="flex-container">
-          <div class="left-side filters">
-            <h3 class="title">Filters</h3>
-            <h4 class="categories">Categories</h4>
-            <div id="categories_checkbox">
-              <div>
-                <input
-                  type="checkbox"
-                  id="food-checkbox"
-                  data-category="food"
-                  class="category-checkbox"
-                  checked
-                /><label for="food-checkbox">Food</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="snacks-checkbox"
-                  data-category="snacks"
-                  class="category-checkbox"
-                  checked
-                /><label for="snacks-checkbox">Snacks</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="beverages-checkbox"
-                  data-category="beverages"
-                  class="category-checkbox"
-                  checked
-                /><label for="beverages-checkbox">Beverages</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="sweets-checkbox"
-                  data-category="sweets"
-                  class="category-checkbox"
-                  checked
-                /><label for="sweets-checkbox">Sweets</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="dairies-checkbox"
-                  data-category="dairies"
-                  class="category-checkbox"
-                  checked
-                /><label for="dairies-checkbox">Dairies</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="meats-checkbox"
-                  data-category="meats"
-                  class="category-checkbox"
-                  checked
-                /><label for="meats-checkbox">Meats</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="cereals-checkbox"
-                  data-category="cereals"
-                  class="category-checkbox"
-                  checked
-                /><label for="cereals-checkbox">Cereals</label>
-              </div>
-            </div>
-            <div>
-              <select class="countries_select" id="countries_select">
-                <option name="All" selected value="All">All</option>
-                <option name="France" value="France">France</option>
-                <option name="Italy" value="Italy">Italy</option>
-              </select>
-            </div>
-            <div>
-              <div class="range-slider">
-                <div><label id="quantity-slider-label">Quantity</label></div>
-                <!-- data-min="-100" se-step="1" data-max="100"  -->
+            <div class="left-side filters">
+                <h3 class="title">Filters</h3>
+                <div id="categories_checkbox" class="u-paddingBottomMedium">
+                    <h4 class="categories">Categories</h4>
+                    <div>
+                        <input type="checkbox" id="food-checkbox" data-category="food" class="category-checkbox"
+                               checked/><label
+                            for="food-checkbox">Food</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="snacks-checkbox" data-category="snacks" class="category-checkbox"
+                               checked/><label
+                            for="snacks-checkbox">Snacks</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="beverages-checkbox" data-category="beverages"
+                               class="category-checkbox" checked/><label
+                            for="beverages-checkbox">Beverages</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sweets-checkbox" data-category="sweets" class="category-checkbox"
+                               checked/><label
+                            for="sweets-checkbox">Sweets</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="dairies-checkbox" data-category="dairies" class="category-checkbox"
+                               checked/><label
+                            for="dairies-checkbox">Dairies</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="meats-checkbox" data-category="meats" class="category-checkbox"
+                               checked/><label
+                            for="meats-checkbox">Meats</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cereals-checkbox" data-category="cereals" class="category-checkbox"
+                               checked/><label
+                            for="cereals-checkbox">Cereals</label>
+                    </div>
+                </div>
+                <div class="u-paddingBottomMedium">
+                    <label for="countries_select">Country</label>
+                    <select class="countries_select" id="countries_select">
+                        <option name="All" selected value="All">All</option>
+                        <option name="France" value="France">France</option>
+                        <option name="USA" value="United States">USA</option>
+                        <option name="Germany" value="Deutschland">Germany</option>
+                        <option name="Switzerland" value="Suisse">Switzerland</option>
+                        <option name="Belgium" value="Belgique">Belgium</option>
+                        <option name="Spain" value="Espa">Spain</option>
+                        <option name="UK" value="king">UK</option>
+                        <option name="Canada" value="Canada">Canada</option>
+                        <option name="Italy" value="Italy">Italy</option>
+                        <option name="Mexico" value="Mexico">Mexico</option>
+                        <option name="Australia" value="Australia">Australia</option>
+                        <option name="Russia" value="Russia">Russia</option>
+                        <option name="Netherlands" value="Netherlands">Netherlands</option>
+                        <option name="Sweden" value="Sweden">Sweden</option>
+                        <option name="Portugal" value="Portugal">Portugal</option>
+                        <option name="Austria" value="Austria">Austria</option>
+                    </select>
+                </div>
+                <div class="u-paddingBottomMedium">
+                    <label for="nutrition_select">Nutrition grade</label>
+                    <select class="nutrition_select" id="nutrition_select">
+                        <option name="All" selected value="All">All</option>
+                        <option name="A" value="A">A</option>
+                        <option name="B" value="B">B</option>
+                        <option name="C" value="C">C</option>
+                        <option name="D" value="D">D</option>
+                        <option name="E" value="E">E</option>
+                    </select>
+                </div>
+                <h4>Nutrient levels</h4>
                 <div>
-                  <div
-                    id="range-slider"
-                    data-min="0"
-                    se-step="50"
-                    data-max="5000"
-                    data-min-value="0"
-                    data-max-value="5000"
-                    class="slider"
-                  >
-                    <div class="slider-touch-left"><span></span></div>
-                    <div class="slider-touch-right"><span></span></div>
-                    <div class="slider-line"><span></span></div>
-                  </div>
+                    <label for="fat_select">Fat</label>
+                    <select class="fat_select" id="fat_select">
+                        <option name="All" selected value="all">All</option>
+                        <option name="Low" value="low">Low</option>
+                        <option name="Moderate" value="moderate">Moderate</option>
+                        <option name="High" value="high">High</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="salt_select">Salt</label>
+                    <select class="salt_select" id="salt_select">
+                        <option name="All" selected value="all">All</option>
+                        <option name="Low" value="low">Low</option>
+                        <option name="Moderate" value="moderate">Moderate</option>
+                        <option name="High" value="high">High</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="sugar_select">Sugar</label>
+                    <select class="sugar_select" id="sugar_select">
+                        <option name="All" selected value="all">All</option>
+                        <option name="Low" value="low">Low</option>
+                        <option name="Moderate" value="moderate">Moderate</option>
+                        <option name="High" value="high">High</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="sfat_select">Saturated-fat</label>
+                    <select class="sfat_select" id="sfat_select">
+                        <option name="All" selected value="all">All</option>
+                        <option name="Low" value="low">Low</option>
+                        <option name="Moderate" value="moderate">Moderate</option>
+                        <option name="High" value="high">High</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="padding-30">
+                        <div class="stv-switch">
+                            <input class='stv-checkbox-switch' type="checkbox" id="fb_recom"/>
+                            <label for="fb_recom">Use facebook friends recommendations</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="padding-30">
                   <div class="stv-switch">

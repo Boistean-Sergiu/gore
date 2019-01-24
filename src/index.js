@@ -22,7 +22,12 @@ onReady(async () => {
       meats: true,
       cereals: true,
     },
-    country: 'All'
+    country: 'all',
+    nutrition: 'all',
+    fat: 'all',
+    salt: 'all',
+    sugar: 'all',
+    sfat: 'all'
   }
   //initPriceSlider('price-slider', 'price-slider-label', filters)
   let quantitySlider = document.getElementById('range-slider')
@@ -49,6 +54,21 @@ onReady(async () => {
       getRecommendations(filters)
     } else if (hasClass(e.target, 'countries_select')) {
       filters.country = e.target.value
+      getRecommendations(filters)
+    } else if (hasClass(e.target, 'nutrition_select')) {
+      filters.nutrition = e.target.value
+      getRecommendations(filters)
+    } else if (hasClass(e.target, 'fat_select')) {
+      filters.fat = e.target.value
+      getRecommendations(filters)
+    } else if (hasClass(e.target, 'salt_select')) {
+      filters.salt = e.target.value
+      getRecommendations(filters)
+    } else if (hasClass(e.target, 'sugar_select')) {
+      filters.sugar = e.target.value
+      getRecommendations(filters)
+    } else if (hasClass(e.target, 'sfat_select')) {
+      filters.sfat = e.target.value
       getRecommendations(filters)
     }
   })
