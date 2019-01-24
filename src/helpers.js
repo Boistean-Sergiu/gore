@@ -247,7 +247,14 @@ export const getRecommendations = (filters) => {
       if (typeof val !== 'object') {
         return `${key}=${val}`
       } else {
-        return Object.entries(val).map(([key, val]) => `${key}=${val}`)
+        let filters = Object.entries(val)
+        let finalFilters = []
+        for (let i = 0; i < filters.length; i++) {
+          if (filters[i][1]) {
+            finalFilters.push(`${key}[${finalFilters.length}]=${filters[i][0]}`)
+          }
+        }
+        return finalFilters
       }
     }
   )
