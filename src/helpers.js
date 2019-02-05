@@ -294,6 +294,14 @@ export function initScanner () {
   })
 }
 
+export function changeButtonText (id, text, oldClass, newClass) {
+  let buttons = document.querySelectorAll(`[data-id='${id}']`)
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].innerHTML = text
+    buttons[i].className = buttons[i].className.replace(oldClass, newClass)
+  }
+}
+
 export function scan () {
   document.getElementById('uploadImage').click()
 }
@@ -342,7 +350,8 @@ export function paintFavouriteProducts (products) {
 }
 
 export function paintRecommendedProducts (products) {
-  let html = products.map(product => generateProductHtml(product, true))
+  let fav = getCookieFavs()
+  let html = products.map(product => generateProductHtml(product, fav.includes(product._id)))
   let productElement = document.getElementById('recommended-products')
   productElement.innerHTML = html
 }
