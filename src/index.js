@@ -13,16 +13,8 @@ onReady(async () => {
   let filters = {
     minQuantity: 0,
     maxQuantity: 5000,
-    categories: {
-      food: false,
-      snacks: false,
-      beverages: false,
-      sweets: false,
-      dairies: false,
-      meats: false,
-      cereals: false,
-    },
     country: 'all',
+    packages: 'all',
     nutrition: 'all',
     fat: 'all',
     salt: 'all',
@@ -49,28 +41,32 @@ onReady(async () => {
     }
   })
   document.addEventListener('change', function (e) {
-    if (hasClass(e.target, 'category-checkbox')) {
-      filters.categories[e.target.dataset.category] = !filters.categories[e.target.dataset.category]
-      getRecommendations(filters)
-    } else if (hasClass(e.target, 'countries_select')) {
-      filters.country = e.target.value
-      getRecommendations(filters)
-    } else if (hasClass(e.target, 'nutrition_select')) {
-      filters.nutrition = e.target.value
-      getRecommendations(filters)
-    } else if (hasClass(e.target, 'fat_select')) {
-      filters.fat = e.target.value
-      getRecommendations(filters)
-    } else if (hasClass(e.target, 'salt_select')) {
-      filters.salt = e.target.value
-      getRecommendations(filters)
-    } else if (hasClass(e.target, 'sugar_select')) {
-      filters.sugar = e.target.value
-      getRecommendations(filters)
-    } else if (hasClass(e.target, 'sfat_select')) {
-      filters.sfat = e.target.value
-      getRecommendations(filters)
+      if (hasClass(e.target, 'category-checkbox')) {
+        filters.categories[e.target.dataset.category] = !filters.categories[e.target.dataset.category]
+        getRecommendations(filters)
+      } else if (hasClass(e.target, 'countries_select')) {
+        filters.country = e.target.value
+        getRecommendations(filters)
+      } else if (hasClass(e.target, 'package_select')) {
+        filters.packages = e.target.value
+        getRecommendations(filters)
+      } else if (hasClass(e.target, 'nutrition_select')) {
+        filters.nutrition = e.target.value
+        getRecommendations(filters)
+      } else if (hasClass(e.target, 'fat_select')) {
+        filters.fat = e.target.value
+        getRecommendations(filters)
+      } else if (hasClass(e.target, 'salt_select')) {
+        filters.salt = e.target.value
+        getRecommendations(filters)
+      } else if (hasClass(e.target, 'sugar_select')) {
+        filters.sugar = e.target.value
+        getRecommendations(filters)
+      } else if (hasClass(e.target, 'sfat_select')) {
+        filters.sfat = e.target.value
+        getRecommendations(filters)
+      }
     }
-  })
+  )
 })
 

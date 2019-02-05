@@ -3,14 +3,16 @@ import { getImage } from './products.controller'
 
 export const getRecommendations = async (req, res) => {
   try {
-    console.log(req.headers)
     let query = {}
     let {
-      categories, country, nutrition, fat,
+      categories, country, packages, nutrition, fat,
       salt, sugar, sfat
     } = req.query
     if (country !== 'all') {
       query.countries = {$regex: country}
+    }
+    if (packages !== 'all') {
+      query.packaging = {$regex: packages}
     }
     if (nutrition !== 'all') {
       query.nutrient_grades = nutrition
