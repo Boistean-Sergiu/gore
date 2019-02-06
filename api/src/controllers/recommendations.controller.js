@@ -3,6 +3,7 @@ import { getImage } from './products.controller'
 
 export const getRecommendations = async (req, res) => {
   try {
+    console.log(req.favs)
     let query = {}
     let {
       categories, country, packages, nutrition, fat,

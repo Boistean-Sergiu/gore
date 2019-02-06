@@ -13,6 +13,15 @@ onReady(async () => {
   let filters = {
     minQuantity: 0,
     maxQuantity: 5000,
+    categories: {
+      food: false,
+      snacks: false,
+      beverages: false,
+      sweets: false,
+      dairies: false,
+      meats: false,
+      cereals: false,
+    },
     country: 'all',
     packages: 'all',
     nutrition: 'all',
