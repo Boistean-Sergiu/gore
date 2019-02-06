@@ -29,16 +29,19 @@ export const getRecommendations = async (req, res) => {
     if (sfat !== 'all') {
       query['nutrient_levels.saturated-fat'] = sfat
     }
+    let terms = []
     if (categories && categories.length) {
-      let dinamicQuery = {$or: []}
-      for (let i = 0; i < categories.length; i++) {
-        dinamicQuery.$or.push({
-          ...query,
-          _keywords: {$regex: categories[i]}
-        })
-      }
-      query = dinamicQuery
+      terms = [...terms, ...categories]
     }
+    if (req.favs.length > 0) {
+      let keywords = await Product.distinct('_keywords', {_id: {$in: req.favs}}).exec()
+      terms = [...terms, ...keywords]
+    }
+    if (terms.length > 0) {
+      terms = terms.map(term => `^${term}`)
+      query._keywords = {$regex: terms.join('|')}
+    }
+    console.log(JSON.stringify(query))
     let products = await Product.find(query).limit(5).exec()
     if (products) {
       products = JSON.parse(JSON.stringify(products))

@@ -5,8 +5,8 @@ import {
   initScanner,
   scan,
   hasClass,
-  saveLocalStorageFav,
-  fetchFavourites, getLocalStorageFavs, removeLocalStorageFav, getRecommendations
+  saveCookieFav,
+  fetchFavourites, getCookieFavs, removeCookieFav, getRecommendations, changeButtonText
 } from './helpers'
 
 onReady(async () => {
@@ -31,13 +31,15 @@ onReady(async () => {
   if (scanButton) {
     initScanner()
     scanButton.addEventListener('click', scan)
-    fetchFavourites(getLocalStorageFavs())
+    fetchFavourites(getCookieFavs())
   }
   document.addEventListener('click', function (e) {
     if (hasClass(e.target, 'save_favourite')) {
-      fetchFavourites(saveLocalStorageFav(e.target.dataset.id))
+      fetchFavourites(saveCookieFav(e.target.dataset.id))
+      changeButtonText(e.target.dataset.id, 'Remove from favourites', 'save_favourite', 'remove_favourite')
     } else if (hasClass(e.target, 'remove_favourite')) {
-      fetchFavourites(removeLocalStorageFav(e.target.dataset.id))
+      fetchFavourites(removeCookieFav(e.target.dataset.id))
+      changeButtonText(e.target.dataset.id, 'Add to favourites', 'remove_favourite', 'save_favourite')
     }
   })
   document.addEventListener('change', function (e) {

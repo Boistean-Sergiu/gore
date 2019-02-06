@@ -35,7 +35,7 @@ export const getProducts = async (req, res) => {
   try {
     let products
     if (req.query.ids !== undefined) {
-      let ids = await req.query.ids.split(',').map(parseFloat)
+      let ids = await req.query.ids.split(',')
       products = await Product.find({_id: {$in: ids}}).exec()
     } else {
       products = await Product.find().limit(20).exec()

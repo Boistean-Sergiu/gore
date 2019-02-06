@@ -294,6 +294,14 @@ export function initScanner () {
   })
 }
 
+export function changeButtonText (id, text, oldClass, newClass) {
+  let buttons = document.querySelectorAll(`[data-id='${id}']`)
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].innerHTML = text
+    buttons[i].className = buttons[i].className.replace(oldClass, newClass)
+  }
+}
+
 export function scan () {
   document.getElementById('uploadImage').click()
 }
@@ -342,35 +350,38 @@ export function paintFavouriteProducts (products) {
 }
 
 export function paintRecommendedProducts (products) {
-  let html = products.map(product => generateProductHtml(product, true))
+  let fav = getCookieFavs()
+  let html = products.map(product => generateProductHtml(product, fav.includes(product._id)))
   let productElement = document.getElementById('recommended-products')
   productElement.innerHTML = html
 }
 
-export const getLocalStorageFavs = () => {
-  let favs = localStorage.getItem('favourites')
+export const getCookieFavs = () => {
+  let favs = getCookie('favourites')
   if (favs) {
     return favs.split(',')
   }
   return []
 }
-export const saveLocalStorageFav = (id) => {
-  let favs = getLocalStorageFavs()
+export const saveCookieFav = (id) => {
+  let favs = getCookieFavs()
   if (!favs.includes(id.toString())) {
     favs.push(id)
-    localStorage.setItem('favourites', favs.join(','))
+    setCookie('favourites', '', -1)
+    setCookie('favourites', favs.join(','), 1000)
   }
   return favs
 }
-export const removeLocalStorageFav = (id) => {
-  let favs = getLocalStorageFavs()
+export const removeCookieFav = (id) => {
+  let favs = getCookieFavs()
   let newFavs = []
   for (let i = 0; i < favs.length; i++) {
     if (id.toString() !== favs[i]) {
       newFavs.push(favs[i])
     }
   }
-  localStorage.setItem('favourites', newFavs.join(','))
+  setCookie('favourites', '', -1)
+  setCookie('favourites', newFavs.join(','), 1000)
   return newFavs
 }
 
@@ -413,4 +424,18 @@ export function fetchFavourites (ids) {
     .catch(function () {
       hideLoader()
     })
+}
+
+export function setCookie (name, value, days) {
+  let d = new Date()
+  let multiply = 24 * 60 * days
+  d.setTime(d.getTime() + multiply * 60 * 1000)
+  let domain = `domain=localhost;`
+  document.cookie =
+    name + '=' + value + ';' + domain + 'path=/;expires=' + d.toGMTString()
+}
+
+export function getCookie (name) {
+  let v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)')
+  return v ? v[2] : null
 }
