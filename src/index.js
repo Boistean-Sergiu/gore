@@ -13,7 +13,7 @@ import {
   changeButtonText,
   onInit,
   facebookLogin,
-  updateFavourites
+  updateFavourites, getFriends
 } from './helpers'
 
 onReady(async () => {
@@ -70,7 +70,7 @@ onReady(async () => {
         getRecommendations(filters)
       } else if (hasClass(e.target, 'stv-checkbox-switch')) {
         filters.friends = !filters.friends
-        console.log(filters.friends)
+        getRecommendations(filters)
       } else if (hasClass(e.target, 'countries_select')) {
         filters.country = e.target.value
         getRecommendations(filters)

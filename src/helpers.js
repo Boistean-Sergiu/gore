@@ -242,6 +242,26 @@ export const initQuantitySlider = (id, label, filters) => {
   }
 }
 
+export const fetchRecommendations = (params, friends = null) => {
+  let newParams = params.flat(2)
+  showLoader()
+  if (friends && friends.data) {
+    for (let i = 0; i < friends.data.length; i++) {
+      newParams.push(`friends[${i}]=${friends.data[i].id}`)
+    }
+  }
+  fetch(`http://localhost:8080/api/recommendations?${newParams.join('&')}`, {
+    credentials: 'include'
+  }).then(response => response.json())
+    .then(data => {
+      paintRecommendedProducts(data)
+      hideLoader()
+    })
+    .catch(function () {
+      hideLoader()
+      alert('Product does not exist in our database')
+    })
+}
 export const getRecommendations = (filters) => {
   let params = Object.entries(filters).map(([key, val]) => {
       if (typeof val !== 'object') {
@@ -258,18 +278,14 @@ export const getRecommendations = (filters) => {
       }
     }
   )
-  showLoader()
-  fetch(`http://localhost:8080/api/recommendations?${params.flat(2).join('&')}`, {
-    credentials: 'include'
-  }).then(response => response.json())
-    .then(data => {
-      paintRecommendedProducts(data)
-      hideLoader()
-    })
-    .catch(function () {
-      hideLoader()
-      alert('Product does not exist in our database')
-    })
+  if (filters.friends) {
+    let cb = function (friends) {
+      fetchRecommendations(params, friends)
+    }
+    getFriends(cb)
+  } else {
+    fetchRecommendations(params)
+  }
 }
 
 export function initScanner () {
@@ -468,10 +484,6 @@ export function facebookLogin () {
       res.authResponse.accessToken
       };${expires};path=/`
 
-    FB.api('/me/friends', function (response) {
-      console.log(response)
-    }, {scope: 'user_friends'})
-
     FB.api('/me', res => {
       document.cookie = `userId=${res.id};${expires};path=/`
       document.cookie = `userName=${res.name};${expires};path=/`
@@ -481,6 +493,12 @@ export function facebookLogin () {
       }
     })
   }, {scope: 'public_profile,email,user_friends'})
+}
+
+export function getFriends (cb) {
+  FB.api(`/me/friends?access_token=${getCookie('goreToken')}`, function (response) {
+    cb(response)
+  }, {scope: 'user_friends'})
 }
 
 export function onInit () {
