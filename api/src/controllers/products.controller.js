@@ -34,6 +34,9 @@ export const getImage = async (targetUrl) => {
 export const getProducts = async (req, res) => {
   try {
     let products
+    if (req.query.ids === '') {
+      return res.json([])
+    }
     if (req.query.ids !== undefined) {
       let ids = await req.query.ids.split(',')
       products = await Product.find({_id: {$in: ids}}).exec()
