@@ -468,6 +468,10 @@ export function facebookLogin () {
       res.authResponse.accessToken
       };${expires};path=/`
 
+    FB.api('/me/friends', function (response) {
+      console.log(response)
+    }, {scope: 'user_friends'})
+
     FB.api('/me', res => {
       document.cookie = `userId=${res.id};${expires};path=/`
       document.cookie = `userName=${res.name};${expires};path=/`
@@ -476,7 +480,7 @@ export function facebookLogin () {
         nameInfo.innerHTML = cookieName
       }
     })
-  })
+  }, {scope: 'public_profile,email,user_friends'})
 }
 
 export function onInit () {
