@@ -411,6 +411,18 @@ export function fetchProduct (code) {
     })
 }
 
+export function updateFavourites () {
+  showLoader()
+  fetch(`http://localhost:8080/api/favourites`, {
+    method: 'PUT',
+    credentials: 'include'
+  }).then(response => response.json())
+    .then(data => {
+    })
+    .catch(function () {
+    })
+}
+
 export function fetchFavourites (ids) {
   showLoader()
   fetch(`http://localhost:8080/api/products?ids=${ids}`, {
