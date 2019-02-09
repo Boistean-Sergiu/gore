@@ -440,7 +440,7 @@ export function getCookie (name) {
   return v ? v[2] : null
 }
 
-function facebookLogin () {
+export function facebookLogin () {
   FB.init({
     appId: '1958746447768376',
     cookie: true,

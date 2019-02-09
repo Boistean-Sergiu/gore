@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>GORE APP</title>
+    <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script></script>
+</head>
+
+<body>
+<div class="wrapper">
+    <header class="header menu-bar">
+        <h1 class="logo logo--small">
+            <a href="index.html"><span>Gore</span></a>
+        </h1>
+        <ul class="menu-navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="scan.html">Scan products</a></li>
+            <li><a href="recommend.html">Get recommandations</a></li>
+            <li class="active"><a href="javascript:void(0);">Statistics</a></li>
+        </ul>
+        <div class="user-nav">
+            <strong class="user-nav__name">User</strong>
+            <div class="user-nav__avatar">
+                <img src="img/user.jpeg" alt="Logged User"/>
+            </div>
+        </div>
+    </header>
+    <div id="loader" class="loader"><img src="img/loader.svg"/></div>
+    <script
+            src="http://connect.facebook.net/en_US/all.js"
+            asp-append-version="true"
+    ></script>
+    <script src="https://demo.dynamsoft.com/dbr_wasm/js/dbr-6.4.1.1.min.js"></script>
+    <script src="dist/index.js"></script>
+</body>
+</html>

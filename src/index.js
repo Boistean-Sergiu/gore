@@ -6,13 +6,14 @@ import {
   scan,
   hasClass,
   saveCookieFav,
-  fetchFavourites, getCookieFavs, removeCookieFav, getRecommendations, changeButtonText, onInit
+  fetchFavourites, getCookieFavs, removeCookieFav, getRecommendations, changeButtonText, onInit, facebookLogin
 } from './helpers'
 
 onReady(async () => {
   let filters = {
     minQuantity: 0,
     maxQuantity: 5000,
+    friends: false,
     categories: {
       food: false,
       snacks: false,
@@ -49,12 +50,17 @@ onReady(async () => {
     } else if (hasClass(e.target, 'remove_favourite')) {
       fetchFavourites(removeCookieFav(e.target.dataset.id))
       changeButtonText(e.target.dataset.id, 'Add to favourites', 'remove_favourite', 'save_favourite')
+    } else if (hasClass(e.target, 'login-btn')) {
+      facebookLogin()
     }
   })
   document.addEventListener('change', function (e) {
       if (hasClass(e.target, 'category-checkbox')) {
         filters.categories[e.target.dataset.category] = !filters.categories[e.target.dataset.category]
         getRecommendations(filters)
+      } else if (hasClass(e.target, 'stv-checkbox-switch')) {
+        filters.friends = !filters.friends
+        console.log(filters.friends)
       } else if (hasClass(e.target, 'countries_select')) {
         filters.country = e.target.value
         getRecommendations(filters)
