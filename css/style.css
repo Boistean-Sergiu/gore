@@ -932,7 +932,7 @@ input::-moz-focus-outer {
   max-width: 95px;
   height: 200px; }
 
-.categories,.countries {
+.categories {
   padding-bottom: 5px; }
 
 .homePageRailContainer {

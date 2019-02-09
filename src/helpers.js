@@ -247,7 +247,7 @@ export const fetchRecommendations = (params, friends = null) => {
   showLoader()
   if (friends && friends.data) {
     for (let i = 0; i < friends.data.length; i++) {
-      newParams.push(`friends[${i}]=${friends.data[i].id}`)
+      newParams.push(`friends_ids[${i}]=${friends.data[i].id}`)
     }
   }
   fetch(`http://localhost:8080/api/recommendations?${newParams.join('&')}`, {
