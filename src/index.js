@@ -13,6 +13,7 @@ onReady(async () => {
   let filters = {
     minQuantity: 0,
     maxQuantity: 5000,
+    friends: false,
     categories: {
       food: false,
       snacks: false,
@@ -55,6 +56,9 @@ onReady(async () => {
       if (hasClass(e.target, 'category-checkbox')) {
         filters.categories[e.target.dataset.category] = !filters.categories[e.target.dataset.category]
         getRecommendations(filters)
+      } else if(hasClass(e.target, 'stv-checkbox-switch')){
+        filters.friends = !filters.friends
+        console.log(filters.friends)
       } else if (hasClass(e.target, 'countries_select')) {
         filters.country = e.target.value
         getRecommendations(filters)
