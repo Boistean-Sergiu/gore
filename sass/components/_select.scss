@@ -1,0 +1,11 @@
+.select{
+  &_label{
+    width: 150px;
+  }
+}
+select{
+  width: 100px;
+}
+input[type='checkbox']{
+  margin-right: 5px;
+}
