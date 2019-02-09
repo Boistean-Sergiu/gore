@@ -276,7 +276,7 @@ export function initScanner () {
   var reader = null
   var iptEl = document.getElementById('uploadImage')
   dynamsoft.dbrEnv.resourcesPath = 'https://demo.dynamsoft.com/dbr_wasm/js'
-  dynamsoft.dbrEnv.licenseKey = 't0085VwAAACn3QS4z3l/rNV2dxif4pSZmcyanZuJjoS3GiM8TcxzxDQHXHBTmmSKXCJvO2NYqyqGdSKc4r+ADH61eA7qdCI+rsHpiyeTIRVHPGfwBnw0WNg=='
+  dynamsoft.dbrEnv.licenseKey = 't0085VwAAADl5Os0WbqzWF5NBQCF2QIalXxPOM3uDCVlYKlLOJStKaBrtMt8LXvEeBmtapLBXk557e1R3IAIqZx4x7wRGaE1chbMnFiVHLmZREfAHpl4WZw=='
   dynamsoft.dbrEnv.onAutoLoadWasmSuccess = function () {
     reader = new dynamsoft.BarcodeReader()
   }
