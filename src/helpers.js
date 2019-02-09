@@ -439,3 +439,69 @@ export function getCookie (name) {
   let v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)')
   return v ? v[2] : null
 }
+
+function facebookLogin () {
+  FB.init({
+    appId: '1958746447768376',
+    cookie: true,
+    xfbml: true,
+    version: 'v2.8'
+  })
+
+  FB.login(function (res) {
+    var d = new Date()
+    d.setTime(d.getTime() + 24 * 60 * 60 * 1000)
+    let expires = `expires=${d.toUTCString}`
+    document.cookie = `goreToken=${
+      res.authResponse.accessToken
+      };${expires};path=/`
+
+    FB.api('/me', res => {
+      document.cookie = `userId=${res.id};${expires};path=/`
+      document.cookie = `userName=${res.name};${expires};path=/`
+      let nameInfo = document.querySelector('.user-nav .user-nav__name')
+      if (nameInfo) {
+        nameInfo.innerHTML = cookieName
+      }
+    })
+  })
+}
+
+export function onInit () {
+  let cookieName = getCookie('userName')
+  if (cookieName) {
+    let nameInfo = document.querySelector('.user-nav .user-nav__name')
+    if (nameInfo) {
+      nameInfo.innerHTML = cookieName
+    }
+    //homepage
+    let signIn = document.querySelector('ul.menu__list > li.menu__item:first-child > a.menu__link:first-child')
+    if (signIn) {
+      signIn.parentNode.removeChild(signIn)
+    }
+    let secondSingInButton = document.querySelector('header.header .header__wrapper .button.header__button')
+    if (secondSingInButton) {
+      secondSingInButton.parentNode.removeChild(secondSingInButton)
+    }
+  } else {
+    let nameSpace = document.querySelector('.user-nav')
+    if (nameSpace) {
+      while (nameSpace.firstChild) {
+        nameSpace.removeChild(nameSpace.firstChild)
+      }
+      let loginButton = document.createElement('button')
+      loginButton.classList.add(
+        'button',
+        'login-btn',
+        'button--transparent',
+        'header-button'
+      )
+      loginButton.onclick = function () {
+        facebookLogin()
+      }
+      loginButton.style.border = 'none'
+      loginButton.innerText = 'LOGIN'
+      nameSpace.appendChild(loginButton)
+    }
+  }
+}

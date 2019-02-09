@@ -6,7 +6,7 @@ import {
   scan,
   hasClass,
   saveCookieFav,
-  fetchFavourites, getCookieFavs, removeCookieFav, getRecommendations, changeButtonText
+  fetchFavourites, getCookieFavs, removeCookieFav, getRecommendations, changeButtonText, onInit
 } from './helpers'
 
 onReady(async () => {
@@ -79,5 +79,6 @@ onReady(async () => {
       }
     }
   )
+  onInit()
 })
 

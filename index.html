@@ -6,166 +6,110 @@
     <title>GORE APP</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script>
-        function facebookLogin(){
-            FB.init({  
-                appId:'1958746447768376',
-                cookie: true,
-                xfbml: true,
-                version: 'v2.8'
-            })
-
-            FB.login(function(res) {
-                var d = new Date();
-                d.setTime(d.getTime() + (24 * 60 * 60 * 1000));
-                let expires = `expires=${d.toUTCString}`
-                document.cookie=`goreToken=${res.authResponse.accessToken};${expires};path=/`
-
-                FB.api('/me',response => {
-                    document.cookie=`userId=${response.id};${expires};path=/`
-                    document.cookie=`userName=${response.name};${expires};path=/`
-                    let signIn = document.querySelector("ul.menu__list > li.menu__item:first-child > a.menu__link:first-child")
-                    if (signIn) {
-                        signIn.parentNode.removeChild(signIn)
-                    }
-                    let secondSingInButton = document.querySelector("header.header .header__wrapper .button.header__button")
-                    if (secondSingInButton) {
-                        secondSingInButton.parentNode.removeChild(secondSingInButton)
-                    }
-                })
-            })
-        }
-
-    </script>
 </head>
 
 <body>
-    <header class="header" id="header">
-        <div class="header__wrapper">
-            <h1 class="header__title logo"><span>Gore</span></h1>
-            <h2 class="header__subtitle">best goods web recommender</h2>
-            <button onclick="facebookLogin()" href="javascript:void(0);" class="button button--transparent header__button">Login</butt>
+<header class="header" id="header">
+    <div class="header__wrapper">
+        <h1 class="header__title logo"><span>Gore</span></h1>
+        <h2 class="header__subtitle">best goods web recommender</h2>
+        <button href="javascript:void(0);" class="button button--transparent header__button login-btn">
+            Login
+        </button>
+    </div>
+</header>
+
+<div class="menu">
+    <input class="menu__checkbox" type="checkbox" id="navi-toggle">
+
+    <label for="navi-toggle" class="menu__button">
+        <span class="menu__icon">&nbsp;</span>
+    </label>
+
+    <div class="menu__background">&nbsp;</div>
+
+    <nav class="menu__nav">
+        <ul class="menu__list">
+            <li class="menu__item login-btn"><a class="menu__link" href="#">Sign in</a></li>
+            <li class="menu__item"><a class="menu__link" href="index.html"><span>01</span>Home</a></li>
+            <li class="menu__item"><a class="menu__link" href="scan.html"><span>02</span>Scan products</a></li>
+            <li class="menu__item"><a class="menu__link" href="recommend.html"><span>03</span>Get recommandations</a>
+            </li>
+            <li class="menu__item"><a class="menu__link" href="./htmlDocs/index.html"><span>04</span>Scholarly HTML</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="landing-wrapper">
+    <section class="section margin-top-5">
+        <h2 class="section__title" id="about">About Gore</h2>
+        <div class="section__wrapper">
+            <div class="section__description">
+                <p class="section__paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Blandit aliquam etiam erat velit scelerisque in dictum. Lectus
+                    nulla at volutpat diam ut. Sit amet nulla facilisi morbi. Morbi enim nunc faucibus a. Odio
+                    aenean sed adipiscing diam donec adipiscing tristique. Tincidunt lobortis feugiat vivamus at
+                    augue eget arcu dictum. Orci nulla pellentesque dignissim enim sit amet. Semper eget duis at
+                    tellus at urna. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Mattis
+                    enim ut tellus elementum sagittis. Quisque egestas diam in arcu cursus euismod. Quis risus sed
+                    vulputate odio ut. Sodales ut eu sem integer vitae
+                </p>
+                <p class="section__paragraph">
+                    Nisl nisi scelerisque eu ultrices vitae. Enim tortor at auctor urna nunc id cursus. Arcu ac
+                    tortor
+                    dignissim convallis aenean et tortor at. Odio morbi quis commodo odio aenean sed adipiscing. Ut
+                    placerat orci nulla pellentesque dignissim enim sit amet venenatis. Dolor sit amet consectetur
+                    adipiscing elit. Sed elementum tempus egestas sed sed. Pretium vulputate sapien nec sagittis
+                    aliquam
+                    malesuada. Massa tincidunt nunc pulvinar sapien. Tortor vitae purus faucibus ornare suspendisse
+                    sed
+                    nisi lacus sed. Dui vivamus arcu felis bibendum ut tristique et egestas.
+                </p>
+            </div>
         </div>
-    </header>
-
-    <div class="menu">
-        <input class="menu__checkbox" type="checkbox" id="navi-toggle">
-
-        <label for="navi-toggle" class="menu__button">
-            <span class="menu__icon">&nbsp;</span>
-        </label>
-
-        <div class="menu__background">&nbsp;</div>
-
-        <nav class="menu__nav">
-            <ul class="menu__list">
-                <li onclick="facebookLogin()" class="menu__item"><a class="menu__link" href="#">Sign in</a></li>
-                <li class="menu__item"><a class="menu__link" href="index.html"><span>01</span>Home</a></li>
-                <li class="menu__item"><a class="menu__link" href="scan.html"><span>02</span>Scan products</a></li>
-                <li class="menu__item"><a class="menu__link" href="recommend.html"><span>03</span>Get recommandations</a></li>
-                <li class="menu__item"><a class="menu__link" href="./htmlDocs/index.html"><span>04</span>Scholarly HTML</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <div class="landing-wrapper">
-        <section class="section margin-top-5">
-            <h2 class="section__title" id="about">About Gore</h2>
-            <div class="section__wrapper">
-                <div class="section__description">
-                    <p class="section__paragraph">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Blandit aliquam etiam erat velit scelerisque in dictum. Lectus
-                        nulla at volutpat diam ut. Sit amet nulla facilisi morbi. Morbi enim nunc faucibus a. Odio
-                        aenean sed adipiscing diam donec adipiscing tristique. Tincidunt lobortis feugiat vivamus at
-                        augue eget arcu dictum. Orci nulla pellentesque dignissim enim sit amet. Semper eget duis at
-                        tellus at urna. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Mattis
-                        enim ut tellus elementum sagittis. Quisque egestas diam in arcu cursus euismod. Quis risus sed
-                        vulputate odio ut. Sodales ut eu sem integer vitae
+    </section>
+    <section class="section--benefits margin-top-5">
+        <div class="section--benefits__wrapper">
+            <h2 class="section__title" id="benefits">Benefits</h2>
+            <div class="benefits">
+                <div class="benefits__card">
+                    <h3 class="heading-tertiary">Find what fits you best</h3>
+                    <p class="feature-box__text">
+                        We will recommend you goods.
                     </p>
-                    <p class="section__paragraph">
-                        Nisl nisi scelerisque eu ultrices vitae. Enim tortor at auctor urna nunc id cursus. Arcu ac
-                        tortor
-                        dignissim convallis aenean et tortor at. Odio morbi quis commodo odio aenean sed adipiscing. Ut
-                        placerat orci nulla pellentesque dignissim enim sit amet venenatis. Dolor sit amet consectetur
-                        adipiscing elit. Sed elementum tempus egestas sed sed. Pretium vulputate sapien nec sagittis
-                        aliquam
-                        malesuada. Massa tincidunt nunc pulvinar sapien. Tortor vitae purus faucibus ornare suspendisse
-                        sed
-                        nisi lacus sed. Dui vivamus arcu felis bibendum ut tristique et egestas.
+                </div>
+                <div class="benefits__card">
+                    <h3 class="heading-tertiary">Find the best price</h3>
+                    <p class="feature-box__text">
+                        We will show you which goods are cheapest
+                    </p>
+                </div>
+
+                <div class="benefits__card">
+                    <h3 class="heading-tertiary">Check if it's healty</h3>
+                    <p class="feature-box__text">
+                        We will tell you if goods are healty
+                    </p>
+                </div>
+                <div class="benefits__card">
+                    <h3 class="heading-tertiary">Check availability</h3>
+                    <p class="feature-box__text">
+                        We will tell you where you find goods.
                     </p>
                 </div>
             </div>
-        </section>
-        <section class="section--benefits margin-top-5">
-            <div class="section--benefits__wrapper">
-                <h2 class="section__title" id="benefits">Benefits</h2>
-                <div class="benefits">
-                    <div class="benefits__card">
-                        <h3 class="heading-tertiary">Find what fits you best</h3>
-                        <p class="feature-box__text">
-                            We will recommend you goods.
-                        </p>
-                    </div>
-                    <div class="benefits__card">
-                        <h3 class="heading-tertiary">Find the best price</h3>
-                        <p class="feature-box__text">
-                            We will show you which goods are cheapest
-                        </p>
-                    </div>
-
-                    <div class="benefits__card">
-                        <h3 class="heading-tertiary">Check if it's healty</h3>
-                        <p class="feature-box__text">
-                            We will tell you if goods are healty
-                        </p>
-                    </div>
-                    <div class="benefits__card">
-                        <h3 class="heading-tertiary">Check availability</h3>
-                        <p class="feature-box__text">
-                            We will tell you where you find goods.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js" integrity="sha256-L/S5mZS8SPJVWoKym3Zwgf2f3/s3X3MaZ7QBA9HdnN8="
+        </div>
+    </section>
+</div>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"
+        integrity="sha256-L/S5mZS8SPJVWoKym3Zwgf2f3/s3X3MaZ7QBA9HdnN8="
         crossorigin="anonymous"></script>
-        <script>
-            function getCookie(cname) {
-                var name = cname + "=";
-                var decodedCookie = decodeURIComponent(document.cookie);
-                var ca = decodedCookie.split(';');
-                for(var i = 0; i <ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                        if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                }
-                return "";
-            }
-            let cookieName = getCookie("userName")
-            if (cookieName !== "") {
-                let signIn = document.querySelector("ul.menu__list > li.menu__item:first-child > a.menu__link:first-child")
-                if (signIn) {
-                    signIn.parentNode.removeChild(signIn)
-                }
-                let secondSingInButton = document.querySelector("header.header .header__wrapper .button.header__button")
-                if (secondSingInButton) {
-                    secondSingInButton.parentNode.removeChild(secondSingInButton)
-                }
-            }
-
-</script>
-    <script src="dist/index.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js" asp-append-version="true"></script>
-    <script src="src/index.js"></script>
-    <script type="application/ld+json">
+<script src="http://connect.facebook.net/en_US/all.js" asp-append-version="true"></script>
+<script src="dist/index.js"></script>
+<script type="application/ld+json">
         {
             "@context": "http://schema.org/",
             "@type": "WebSite",
@@ -194,8 +138,7 @@
             "keywords": "Products, Products recommandations, Recommandations, Scan",
             "isFamilyFriendly": true
         }
-    </script>
 
+</script>
 </body>
-
 </html>
