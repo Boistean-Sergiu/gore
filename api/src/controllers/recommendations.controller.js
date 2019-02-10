@@ -50,9 +50,11 @@ export const queryProducts = async (req, pId) => {
     if (terms.length > 0) {
       let innerTerms = []
       for (let i = 0; i < terms.length; i++) {
-        innerTerms.push(terms[i])
-        if (KEYWORDS_TRANSLATIONS[innerTerms[i]]) {
-          innerTerms = [...innerTerms, ...KEYWORDS_TRANSLATIONS[innerTerms[i]]]
+        if (terms[i].length > 3) {
+          innerTerms.push(terms[i])
+          if (KEYWORDS_TRANSLATIONS[innerTerms[i]]) {
+            innerTerms = [...innerTerms, ...KEYWORDS_TRANSLATIONS[innerTerms[i]]]
+          }
         }
       }
       innerTerms = innerTerms.map(term => `^${term}`)
@@ -64,9 +66,11 @@ export const queryProducts = async (req, pId) => {
   if (terms.length > 0) {
     let innerTerms = []
     for (let i = 0; i < terms.length; i++) {
-      innerTerms.push(terms[i])
-      if (KEYWORDS_TRANSLATIONS[innerTerms[i]]) {
-        innerTerms = [...innerTerms, ...KEYWORDS_TRANSLATIONS[innerTerms[i]]]
+      if (terms[i].length > 3) {
+        innerTerms.push(terms[i])
+        if (KEYWORDS_TRANSLATIONS[innerTerms[i]]) {
+          innerTerms = [...innerTerms, ...KEYWORDS_TRANSLATIONS[innerTerms[i]]]
+        }
       }
     }
     innerTerms = innerTerms.map(term => `^${term}`)

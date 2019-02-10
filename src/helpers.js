@@ -322,6 +322,28 @@ export function scan () {
   document.getElementById('uploadImage').click()
 }
 
+export function generateSVG (data, title) {
+  let total = 0
+  let keys = Object.keys(data)
+  for (let i = 0; i < keys.length; i++) {
+    total += data[keys[i]]
+  }
+  console.log(total)
+  let svg = `<figure>
+                <figcaption>${title} statistics</figcaption>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                     class="chart" width="1000" height="${total * 15}" role="img">`
+  for (let i = 0; i < keys.length; i++) {
+    svg += `<g class="bar">
+             <rect x="200" y="${i * 20}" width="${data[keys[i]] ? data[keys[i]] * 700 / total : 0}" height="19"></rect>
+             <text y="${i * 20 + 9.5}" dy=".35em">${keys[i]} : ${data[keys[i]]}</text>
+            </g>`
+  }
+  svg += `</svg>
+            </figure>`
+  return svg
+}
+
 export function generateProductHtml (product, removeBtn) {
   // if (!product.product_name) {
   //   return ''
@@ -447,6 +469,25 @@ export function fetchFavourites (ids) {
     .then(data => {
         hideLoader()
         paintFavouriteProducts(data)
+      }
+    )
+    .catch(function () {
+      hideLoader()
+    })
+}
+
+export function fetchStatistics (container) {
+  showLoader()
+  fetch(`http://localhost:8080/api/statistics`, {
+    credentials: 'include'
+  }).then(response => response.json())
+    .then(data => {
+        let keys = Object.keys(data)
+        for (let i = 0; i < keys.length; i++) {
+          container.innerHTML += generateSVG(data[keys[i]], keys[i])
+        }
+        hideLoader()
+
       }
     )
     .catch(function () {

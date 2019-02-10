@@ -1,11 +1,36 @@
-.select{
-  &_label{
+.select {
+  &_label {
     width: 150px;
   }
 }
-select{
+
+select {
   width: 100px;
 }
-input[type='checkbox']{
+
+input[type='checkbox'] {
   margin-right: 5px;
+}
+
+#statistics {
+  .bar {
+    fill: #aaa;
+    transition: fill .3s ease;
+    font-family: Helvetica, sans-serif;
+
+    text {
+      fill: #555;
+    }
+  }
+  .bar:hover {
+    fill: red !important;
+    text {
+      fill: red;
+    }
+  }
+  figcaption {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
 }

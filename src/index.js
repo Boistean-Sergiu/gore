@@ -13,7 +13,7 @@ import {
   changeButtonText,
   onInit,
   facebookLogin,
-  updateFavourites, getFriends
+  updateFavourites, getFriends, generateSVG, fetchStatistics
 } from './helpers'
 
 onReady(async () => {
@@ -49,6 +49,10 @@ onReady(async () => {
     initScanner()
     scanButton.addEventListener('click', scan)
     fetchFavourites(getCookieFavs())
+  }
+  let statisticsContainer = document.getElementById('statistics')
+  if (statisticsContainer) {
+    fetchStatistics(statisticsContainer)
   }
   document.addEventListener('click', function (e) {
     if (hasClass(e.target, 'save_favourite')) {
