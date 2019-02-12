@@ -328,11 +328,10 @@ export function generateSVG (data, title) {
   for (let i = 0; i < keys.length; i++) {
     total += data[keys[i]]
   }
-  console.log(total)
   let svg = `<figure>
                 <figcaption>${title} statistics</figcaption>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                     class="chart" width="1000" height="${total * 15}" role="img">`
+                     class="chart" width="1000" height="${keys.length * 25 }">`
   for (let i = 0; i < keys.length; i++) {
     svg += `<g class="bar">
              <rect x="200" y="${i * 20}" width="${data[keys[i]] ? data[keys[i]] * 700 / total : 0}" height="19"></rect>
