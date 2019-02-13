@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Gore</title>
+  <link rel="stylesheet" href="css/scholarly.min.css">
+  <script src="js/scholarly.min.js"></script>
+</head>
+
+<body prefix="schema: http://schema.org">
+  <header>
+    <h1>Gore</h1>
+  </header>
+  <div role="contentinfo">
+    <dl>
+      <dt>Page</dt>
+      <dd>
+        <a href="../index.html">Index page</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Authors</dt>
+      <dd>
+        Boistean Sergiu Andrei, Laslau Laurentiu, Dobos Alexandru Stefan
+      </dd>
+    </dl>
+  </div>
+  <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+    <h2>Abstract</h2>
+    <p>
+      GORE, or better said "Better Goods Web Recommender", is a website used enlarge your current library of possible
+      goods to consume, being capable of using the user's <code>preferences</code> and those of his friends to
+      recommend future
+      possible ingredients or food stuffs.
+    </p>
+  </section>
+  <section typeof="sa:Introduction" id="introduction" role="doc-introduction">
+    <h2>Introduction</h2>
+    <p>
+      Gore, while seeming simple or even useless, can be a saviour in case you are at your wits ends while choosing
+      what to eat, you got bored of your current product choices or your mother asked you what you want to eat and
+      doesn't want you to be unimaginative.
+    </p>
+    <p>
+      Just add to the filters what kind of product you wish to see and do not
+      wish to see, or even scan products to add them as your favorite to make the search more efficient, and you may
+      discover products you weren't aware of or even might get in the mood to eat something you haven't in a long time!
+    </p>
+  </section>
+  <section typeof="sa:HowToUse" id="howToUse" role="doc-howToUse">
+    <h2>How to use</h2>
+    <p>
+      To make it easier for the user to use our app, we decided to explain, step by step, how to explore and use our app through this written tutorial and a video.
+      <section id="Login">
+        <h2>Login</h2>
+        <p>
+          It is possible to login for every page of the app. I the dashboard, login is available both from the Login button, under the Gore logo, and from the menu that can be opened by clicking on the icon on the right upper side of the page.
+        </p>
+        <p>
+          <img src="./imgs/dashboard.png" />
+        </p>
+        <p>
+          <img src="./imgs/dashboard-menu.png" />
+        </p>
+      </section>
+      <section id="Scan">
+        <h2>Scan</h2>
+        <p>
+          To scan a product, on the scan page of course, it is enough to click on the "Scan product" button, which will open a windows window from which the user will select the picture to scan for codes.
+        </p>
+        <p>
+          Once chosen, the app will return the product it found, if it found any, giving the choice to the user to add the product to his favorite list or view similar products.
+        </p>
+        <p>
+          <img src="./imgs/scan.png" />
+        </p>
+        <p>
+          <img src="./imgs/scannedProduct.png" />
+        </p>
+      </section>
+      <section id="Statistics">
+        <p>
+          The statistic page, altough being static, displays interesting information for the user about the general use of the app.
+        </p>
+        <p>
+          <img src="./imgs/statistics.png" />
+        </p>
+      </section>
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org/",
+        "@type": "WebSite",
+        "name": "GORE",
+        "image": [
+            "../img/Index.png",
+            "../img/Menu.png",
+            "../img/RecommendsPhoto.png",
+            "../img/ScanPhoto.png",
+        ],
+        "description": "GORE, Best Goods Web Recommender",
+        "brand": {
+            "@type": "Thing",
+            "name": "ACME"
+        },
+        "about": ["Products", "Products recommandations", "Recommandations", "Scan"],
+        "accessMode": "visual",
+        "aggregateRating": "10",
+        "alternativeHeadline": "Best Goods Web Recommender",
+        "audience": {
+            "audienceType": "Gourmet"
+        },
+        "contentRating": "10",
+        "creator": "Boistean Sergiu Andrei, Laslau Laurentiu, Dobos Stefan",
+        "educationalUse": "Group Work",
+        "keywords": "Products, Products recommandations, Recommandations, Scan",
+        "isFamilyFriendly": true
+    }
+  </script>
+</body>
+
+</html>
