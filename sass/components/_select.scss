@@ -6,10 +6,15 @@
 
 select {
   width: 100px;
+  cursor: pointer;
 }
 
 input[type='checkbox'] {
   margin-right: 5px;
+  cursor: pointer;
+  + label{
+    cursor: pointer;
+  }
 }
 
 #statistics {
@@ -28,9 +33,11 @@ input[type='checkbox'] {
       fill: red;
     }
   }
+
   figcaption {
     font-weight: bold;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
 
 }

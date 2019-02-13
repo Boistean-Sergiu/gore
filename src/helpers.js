@@ -225,7 +225,6 @@ let ZBRangeSlider = function (id) {
   touchLeft.addEventListener('touchstart', onStart)
   touchRight.addEventListener('touchstart', onStart)
 }
-
 export const initQuantitySlider = (id, label, filters) => {
   let newRangeSlider = new ZBRangeSlider(id)
   document.getElementById(label).innerHTML = 'Quantity 0g - 5000g'
@@ -329,7 +328,7 @@ export function generateSVG (data, title) {
     total += data[keys[i]]
   }
   let svg = `<figure>
-                <figcaption>${title} statistics</figcaption>
+                <figcaption>${title}</figcaption>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      class="chart" width="1000" height="${keys.length * 25 }">`
   for (let i = 0; i < keys.length; i++) {
@@ -365,9 +364,6 @@ export function generateProductHtml (product, removeBtn) {
     '                                    </button>\n' +
     '                                </div>\n' +
     '                                <div>\n' +
-    '                                    <button class="gr-button gr-button--quiet u-marginTopTiny gr-button--small">View\n' +
-    '                                        similar\n' +
-    '                                    </button>\n' +
     '                                </div>\n' +
     '                            </div>\n' +
     '                        </div>\n' +
