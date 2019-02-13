@@ -519,10 +519,10 @@ export function facebookLogin () {
     document.cookie = `goreToken=${
       res.authResponse.accessToken
       };${expires};path=/`
-
     FB.api('/me', res => {
       document.cookie = `userId=${res.id};${expires};path=/`
       document.cookie = `userName=${res.name};${expires};path=/`
+      onInit()
       let nameInfo = document.querySelector('.user-nav .user-nav__name')
       if (nameInfo) {
         nameInfo.innerHTML = cookieName
@@ -552,6 +552,14 @@ export function onInit () {
     let secondSingInButton = document.querySelector('header.header .header__wrapper .button.header__button')
     if (secondSingInButton) {
       secondSingInButton.parentNode.removeChild(secondSingInButton)
+    }
+    //other pages
+    let nameSpace = document.querySelector('.user-nav')
+    if (nameSpace) {
+      nameSpace.innerHTML=`<strong class="user-nav__name">${cookieName}</strong>
+            <div class="user-nav__avatar">
+                <img src="img/user.jpeg" alt="Logged User"/>
+            </div>`
     }
   } else {
     let nameSpace = document.querySelector('.user-nav')
