@@ -2,278 +2,415 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Gore</title>
-  <link rel="stylesheet" href="css/scholarly.min.css">
-  <script src="js/scholarly.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Gore</title>
+    <link rel="stylesheet" href="css/scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
 </head>
 
 <body prefix="schema: http://schema.org">
-  <header>
+<header>
     <h1>Gore</h1>
-  </header>
-  <div role="contentinfo">
+</header>
+<div role="contentinfo">
     <dl>
-      <dt>Page</dt>
-      <dd>
-        <a href="../index.html">Index page</a>
-      </dd>
+        <dt>Page</dt>
+        <dd>
+            <a href="../index.html">Index page</a>
+        </dd>
     </dl>
     <dl>
-      <dt>Authors</dt>
-      <dd>
-        Boistean Sergiu Andrei, Laslau Laurentiu, Dobos Alexandru Stefan
-      </dd>
+        <dt>Authors</dt>
+        <dd>
+            Boistean Sergiu Andrei, Laslau Laurentiu, Dobos Alexandru Stefan
+        </dd>
     </dl>
-  </div>
-  <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+</div>
+<section typeof="sa:Abstract" id="abstract" role="doc-abstract">
     <h2>Abstract</h2>
     <p>
-      GORE, or better said "Better Goods Web Recommender", is a website used enlarge your current library of possible
-      goods to consume, being capable of using the user's <code>preferences</code> and those of his friends to
-      recommend future
-      possible ingredients or food stuffs.
+        GORE, or better said "Better Goods Web Recommender", is a website used enlarge your current library of possible
+        goods to consume, being capable of using the user's <code>preferences</code> and those of his friends to
+        recommend future
+        possible ingredients or food stuffs.
     </p>
-  </section>
-  <section typeof="sa:Introduction" id="introduction" role="doc-introduction">
+</section>
+<section typeof="sa:Introduction" id="introduction" role="doc-introduction">
     <h2>Introduction</h2>
     <p>
-      Gore, while seeming simple or even useless, can be a saviour in case you are at your wits ends while choosing
-      what to eat, you got bored of your current product choices or your mother asked you what you want to eat and
-      doesn't want you to be unimaginative.
+        Gore, while seeming simple or even useless, can be a saviour in case you are at your wits ends while choosing
+        what to eat, you got bored of your current product choices or your mother asked you what you want to eat and
+        doesn't want you to be unimaginative.
     </p>
     <p>
-      Just add to the filters what kind of product you wish to see and do not
-      wish to see, or even scan products to add them as your favorite to make the search more efficient, and you may
-      discover products you weren't aware of or even might get in the mood to eat something you haven't in a long time!
+        Just add to the filters what kind of product you wish to see and do not
+        wish to see, or even scan products to add them as your favorite to make the search more efficient, and you may
+        discover products you weren't aware of or even might get in the mood to eat something you haven't in a long
+        time!
     </p>
-  </section>
-  <section typeof="sa:Development" id="development" role="doc-development">
+</section>
+<section typeof="sa:Development" id="development" role="doc-development">
     <h2>Development</h2>
     <p>
-      No project has ever been created without any kind of planning. As such, we too went through a planning process to
-      create the Gore app.
-      <section id="The arhitecture">
-        <h2>The arhitecture</h2>
-        <p>
-          The project is built, like any other, on the  communication between client and server. But, limitations can appear if we do not include other modules, such as the local storage with the client, and the database and external apis with the server, as shows in the picture below.
-        </p>
-        <p>
-          <img src="./imgs/arhitecture.jpg" />
-        </p>
-      </section>
+        No project has ever been created without any kind of planning. As such, we too went through a planning process
+        to
+        create the Gore app.
+        <section id="The arhitecture">
+            <h2>The arhitecture</h2>
+    <p>
+        The project is built, like any other, on the communication between client and server. But, limitations can
+        appear if we do not include other modules, such as the local storage with the client, and the database and
+        external apis with the server, as shows in the picture below.
     </p>
-    <section id="The general view">
-      <h2>The general view</h2>
-      <p>
+    <p>
+        <img src="./imgs/arhitecture.jpg"/>
+    </p>
+</section>
+</p>
+<section id="The general view">
+    <h2>The general view</h2>
+    <p>
         As we couldn't know from the beginning how our app will work, not perfectly at least, it was needed a general
         view on what the use can do. As such, we created a number of AML schemas to display our v`iew on the user
         possibilities and the general arhitecture of the api needed for such app.
-      </p>
-      <p>
-        <img src="./imgs/general1.png" />
-      </p>
-    </section>
-    <section id="The particular view">
-      <h2>The particular view</h2>
-      <p>
+    </p>
+    <p>
+        <img src="./imgs/general1.png"/>
+    </p>
+</section>
+<section id="The particular view">
+    <h2>The particular view</h2>
+    <p>
         Of course, a general view can not show our intentions with the app to a third party, or to ourselves in case we
         need to step back someday and remind ourselves what we wanted to do with Gore and to keep it simpe. As such, a
         particular view on each possibility of the user was needed, this "particular view" being each use case. The use
         cases in our ... case were the login, the product addition to the favorites list, the bar code scan and the
         receival of recommandations.
-      </p>
-      <p>
-        <img src="./imgs/general2.png" />
-      </p>
-      <p>
-        Now, this schema is a bit too general to be called a particular view on the workings of the page, but it is needed to see what is needed for each action of the user. For a more particular view, the next picture shows it best.
-      </p>
-      <p>
-        <img src="./imgs/everything.jpg" />
-      </p>
-    </section>
-    <section id="The packages">
-      <h2>The packages</h2>
-      <p>
-        Nothing works just because we want it to, as such there is a need for classes and methods to make the app work as desired. For ease of understanding, we separated the packages in 3 categories: Data package (for the back end part of the app), user interact package (as the name says, the packages with which the user interacts), and the external communication package (because our api doesn't have all the information needed, requiring login from facebook and information of products from an external api), and a persister package (to keep the data from disappearing after a refresh).
-      </p>
-      <p>
-        <img src="./imgs/packages.png" />
-      </p>
-    </section>
-    <section id="The server">
-      <h2>The server</h2>
-      <p>
-        Or api, respects the restful principles , i.e it exposes the information required by the client at a call, each call having a different URI. The server knows what information it must returns from the headers sent together with the call itself.
-      </p>
-      <p>
-        <img src="./imgs/api.png" />
-      </p>
-    </section>
-    <section id="The database">
-      <h2>The database</h2>
-      <p>
-        While the api interprets the calls form the client, the information it gets doesnt come from nowhere, but from a specific database. The database will hold information referring to each user, from username and password(after being crypted), to the user's preferences.
-      </p>
-      <p>
+    </p>
+    <p>
+        <img src="./imgs/general2.png"/>
+    </p>
+    <p>
+        Now, this schema is a bit too general to be called a particular view on the workings of the page, but it is
+        needed to see what is needed for each action of the user. For a more particular view, the next picture shows it
+        best.
+    </p>
+    <p>
+        <img src="./imgs/everything.jpg"/>
+    </p>
+</section>
+<section id="The packages">
+    <h2>The packages</h2>
+    <p>
+        Nothing works just because we want it to, as such there is a need for classes and methods to make the app work
+        as desired. For ease of understanding, we separated the packages in 3 categories: Data package (for the back end
+        part of the app), user interact package (as the name says, the packages with which the user interacts), and the
+        external communication package (because our api doesn't have all the information needed, requiring login from
+        facebook and information of products from an external api), and a persister package (to keep the data from
+        disappearing after a refresh).
+    </p>
+    <p>
+        <img src="./imgs/packages.png"/>
+    </p>
+</section>
+<section id="The server">
+    <h2>The server</h2>
+    <p>
+        Or api, respects the restful principles , i.e it exposes the information required by the client at a call, each
+        call having a different URI. The server knows what information it must returns from the headers sent together
+        with the call itself.
+    </p>
+    <p>
+        <img src="./imgs/api.png"/>
+    </p>
+</section>
+<section id="The database">
+    <h2>The database</h2>
+    <p>
+        While the api interprets the calls form the client, the information it gets doesnt come from nowhere, but from a
+        specific database. The database will hold information referring to each user, from username and password(after
+        being crypted), to the user's preferences.
+    </p>
+    <p>
         <img src="./imgs/bd.jpg" alt="The database diagram">
-      </p>
-    </section><section id="Preview">
-      <h3>The <code>preview</code></h3>
-      <p>Being the first page that the user use, this page gives a short explanation on what it can do, both in a
+    </p>
+</section>
+<section id="Preview">
+    <h3>The <code>preview</code></h3>
+    <p>Being the first page that the user use, this page gives a short explanation on what it can do, both in a
         paragraph and in a row with boxes.</p>
-    </section>
-    <section id="Scan">
-      <h3>The <code>scan</code></h3>
-      <p>
+</section>
+<section id="Scan">
+    <h3>The <code>scan</code></h3>
+    <p>
         We separated the scanning from the recommandations list to ease the add and removal of favorite products for
         the user, making it a list of its own.
-      </p>
-      <h4>Examples:
-      </h4>
-      <p>GET /api/product/53232690265</p>
-      <p>Response:</p>
-      <p>{status_verbose: "procuct found",
-          product: {
-            "categories_prev_hierarchy":[  
-         "en:fresh-foods",
-         "en:meals",
-         "en:sandwiches",
-         "en:fresh-meals",
-         "fr:croque-monsieur"
-      ],
-      "entry_dates_tags":[  
-         "2016-09-29",
-         "2016-09",
-         "2016"
-      ],
-      "serving_quantity":150,
-      "_id":"3222475893421",
-      "pnns_groups_2":"Sandwich",
-      "pnns_groups_2_tags":[  
-         "sandwich"
-      ],
-      "languages_tags":[  
-         "en:french",
-         "en:1"
-      ],
-      "brands_debug_tags":[  
+    </p>
+    <p>
+        The barcode scan is made by using the dynamosoft library
+        https://demo.dynamsoft.com/dbr_wasm/js/dbr-6.4.1.1.min.js
 
-      ],
-      "image_front_url":"https://static.openfoodfacts.org/images/products/322/247/589/3421/front_fr.10.400.jpg",
-      "stores":"Casino",
-      "origins":"",
-      "product_name_fr_debug_tags":[  
+    <pre>
+        <code>
+      export function initScanner () {
+          var reader = null
+          var iptEl = document.getElementById('uploadImage')
+          dynamsoft.dbrEnv.resourcesPath = 'https://demo.dynamsoft.com/dbr_wasm/js'
+          dynamsoft.dbrEnv.licenseKey = 't0085VwAAADl5Os0WbqzWF5NBQCF2QIalXxPOM3uDCVlYKlLOJStKaBrtMt8LXvEeBmtapLBXk557e1R3IAIqZx4x7wRGaE1chbMnFiVHLmZREfAHpl4WZw=='
+          dynamsoft.dbrEnv.onAutoLoadWasmSuccess = function () {
+            reader = new dynamsoft.BarcodeReader()
+          }
+          iptEl.addEventListener('change', function () {
+            reader.decodeFileInMemory(this.files[0]).then(function (results) {
+              if (results && results.length) {
+                fetchProduct(results[0].BarcodeText)
+              } else {
+                alert('Code was not recognised')
+              }
+            }).catch(ex => {
+              alert('error:' + (ex.message || ex))
+            })
+            this.value = ''
+          })
+        }
+        </code>
+    </pre>
+    </p>
+    <p>Then, the code is being sent to the api, in order to find our product informations</p>
+    <h4>Examples:
+    </h4>
+    <p>GET /api/product/53232690265</p>
+    <p>Response:</p>
+    <p>{status_verbose: "procuct found",
+        product: {
+        "categories_prev_hierarchy":[
+        "en:fresh-foods",
+        "en:meals",
+        "en:sandwiches",
+        "en:fresh-meals",
+        "fr:croque-monsieur"
+        ],
+        "entry_dates_tags":[
+        "2016-09-29",
+        "2016-09",
+        "2016"
+        ],
+        "serving_quantity":150,
+        "_id":"3222475893421",
+        "pnns_groups_2":"Sandwich",
+        "pnns_groups_2_tags":[
+        "sandwich"
+        ],
+        "languages_tags":[
+        "en:french",
+        "en:1"
+        ],
+        "brands_debug_tags":[
 
-      ],
-      "generic_name_fr":"Pain de mie garni de fromage fondu et de jambon cuit choix",
-      "additives_old_n":11,
-      "nutrition_data_per_debug_tags":[  
+        ],
+        "image_front_url":"https://static.openfoodfacts.org/images/products/322/247/589/3421/front_fr.10.400.jpg",
+        "stores":"Casino",
+        "origins":"",
+        "product_name_fr_debug_tags":[
 
-      ],
-      "expiration_date_debug_tags":[  
+        ],
+        "generic_name_fr":"Pain de mie garni de fromage fondu et de jambon cuit choix",
+        "additives_old_n":11,
+        "nutrition_data_per_debug_tags":[
 
-      ],
- ....mult mai multe
-          }}</p>
-      <p>or</p>
-      <p>{error: "Product not found"}</p>
-      <p>
-        <img src="./imgs/scan.png" />
-      </p>
-    </section>
-    <section id="Recommandations">
-      <h3>The <code>recommandations</code></h3>
-      <p>
+        ],
+        "expiration_date_debug_tags":[
+
+        ],
+        ....mult mai multe
+        }}</p>
+    <p>or</p>
+    <p>{error: "Product not found"}</p>
+    <p>
+        <img src="./imgs/scan.png"/>
+    </p>
+</section>
+<section id="Recommandations">
+    <h3>The <code>recommandations</code></h3>
+    <p>
         Giving filters for the user to use, the page will show recommended items based on said filter and the already
         preferred products of the user.
-      </p>
-      <h4>Examples:
-      </h4>
-      <p>GET /api/recommandations/akdh72212okdjsnad8</p>
-      <p>Response:</p>
-      <p>[{id: 133, code:53232690265, name:"Coca Cola"}]</p>
-      <p>or</p>
-      <p>{error: "No recommandations found"}</p>
-      <p>
+    </p>
+    <p>
+        The favourite ids are stored inside a cookie, so the api can access them anytime.
+        If the user wants to use friends recommendations, the facebook api is being used to get friends ids, then the ids are being sent to the api as well
+        If the user is logged in, his favourites will be saved inside the database
+    <pre>
+        <code>
+    export function getFriends (cb) {
+      FB.api(`/me/friends?access_token=${getCookie('goreToken')}`, function (response) {
+        cb(response)
+      }, {scope: 'user_friends'})
+    }
+        </code>
+    </pre>
+    </p>
+    <h4>Examples:
+    </h4>
+    <p>GET /api/recommendations?minQuantity=0&maxQuantity=5000&friends=true&country=all&packages=all&nutrition=all&fat=all&salt=all&sugar=all&sfat=all&friends_ids[0]=1022489257958041&friends_ids[1]=107502510381434</p>
+    <p>Response:</p>
+    <p>[{id: 133, code:53232690265, name:"Coca Cola"}]</p>
+    <p>or</p>
+    <p>{error: "No recommandations found"}</p>
+    <p>
         <img src="./imgs/recommandations.png"/>
-      </p>
-    </section>
-    <section id="Login">
-      <h3>The <code>login</code></h3>
-      <p>
+    </p>
+</section>
+<section id="Login">
+    <h3>The <code>login</code></h3>
+    <p>
         To ease the friend based products filter, to help the user filter and see the goods <code>prefered</code> by
         your friends, a
         facebook login was implemented.
-      </p>
-      <h4>Examples:
-      </h4>
-      <p>POST /api/login {username: "vasile.croitoru", password: "password"}</p>
-      <p>Response:</p> 
-      <p>{id: "aasodask8aihj23213", name:"Vasile Croitoru", token: "atkarasi23123"}</p>
-      <p>or</p>
-      <p>{error: "Login failed"}</p>
-      <p>
+    </p>
+    <p>
+        The facebook api is being used to login, then the access token and user info are stored inside cookies.
+        <pre>
+        <code>
+    export function facebookLogin () {
+      FB.init({
+        appId: '1958746447768376',
+        cookie: true,
+        xfbml: true,
+        version: 'v2.8'
+      })
+
+      FB.login(function (res) {
+        var d = new Date()
+        d.setTime(d.getTime() + 24 * 60 * 60 * 1000)
+        let expires = `expires=${d.toUTCString}`
+        document.cookie = `goreToken=${
+          res.authResponse.accessToken
+          };${expires};path=/`
+        FB.api('/me', res => {
+          document.cookie = `userId=${res.id};${expires};path=/`
+          document.cookie = `userName=${res.name};${expires};path=/`
+          onInit()
+          let nameInfo = document.querySelector('.user-nav .user-nav__name')
+          if (nameInfo) {
+            nameInfo.innerHTML = cookieName
+          }
+        })
+      }, {scope: 'public_profile,email,user_friends'})
+    }
+        </code>
+        </pre>
+    </p>
+    <p>
         <img src="./imgs/login.png"/>
-      </p>
-    </section>
-    <section id="Statistics">
-      <h3>The <code>statistics</code></h3>
-      <p>
-        Gore app gives the user the possibility to see the statistics for the general userbase of the app, as the user himself and his friends.
-      </p>
-      <h4>Examples:
-      </h4>
-      <p>GET /api/statistics</p>
-      <p>Response:</p>
-      <p>[{name: "cocacola",value: "30%"}...]</p>
-      <p>or</p>
-      <p>{error: "Something went wrong"}</p>
-      <p>
+    </p>
+</section>
+<section id="Statistics">
+    <h3>The <code>statistics</code></h3>
+    <p>
+        Gore app gives the user the possibility to see the statistics for the general userbase of the app, as the user
+        himself and his friends.
+    </p>
+    <p>
+        The list of all favourite products are being interogated by the api in order to obtain several statistics.
+        Then based on those statistics we generate a svg for each statistic category
+        <pre>
+        <code><xmp>
+    export function fetchStatistics (container) {
+      showLoader()
+      fetch(`http://localhost:8080/api/statistics`, {
+        credentials: 'include'
+      }).then(response => response.json())
+        .then(data => {
+            let keys = Object.keys(data)
+            for (let i = 0; i < keys.length; i++) {
+              container.innerHTML += generateSVG(data[keys[i]], keys[i])
+            }
+            hideLoader()
+
+          }
+        )
+        .catch(function () {
+          hideLoader()
+        })
+    }
+    export function generateSVG (data, title) {
+      let total = 0
+      let keys = Object.keys(data)
+      for (let i = 0; i < keys.length; i++) {
+        total += data[keys[i]]
+      }
+      let svg = `<figure>
+                    <figcaption>${title} statistics</figcaption>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         class="chart" width="1000" height="${keys.length * 25 }">`
+      for (let i = 0; i < keys.length; i++) {
+        svg += `<g class="bar">
+                 <rect x="200" y="${i * 20}" width="${data[keys[i]] ? data[keys[i]] * 700 / total : 0}" height="19"></rect>
+                 <text y="${i * 20 + 9.5}" dy=".35em">${keys[i]} : ${data[keys[i]]}</text>
+                </g>`
+      }
+      svg += `</svg>
+                </figure>`
+      return svg
+    }
+        </xmp></code>
+        </pre>
+    </p>
+    <h4>Examples:
+    </h4>
+    <p>GET /api/statistics</p>
+    <p>Response:</p>
+    <p>[{name: "cocacola",value: "30%"}...]</p>
+    <p>or</p>
+    <p>{error: "Something went wrong"}</p>
+    <p>
         <img src="./imgs/statistics.png"/>
-      </p>
-    </section>
-  </section>
-  <section typeof="sa:Technologies" id="technologies" role="doc-technologies">
+    </p>
+</section>
+</section>
+<section typeof="sa:Technologies" id="technologies" role="doc-technologies">
     <h2>Technologies</h2>
     <p>To create the page, a set of technologies were of course used, and being only the client-side being created, the
-      list narrows down to:
-      <ul>
+        list narrows down to:
+    <ul>
         <li>HTML-CSS: The basics and essentials for a webpage.</li>
         <li>Javascript: To create an interactive page and easier to use filters, javascript is ideal.</li>
         <li>SCSS: Indeed, CSS is the basic, but sometime it can be rather repetitive or just tiresome, so we took
-          advantage of a CSS-compiler to ease our work.</li>
-      </ul>
+            advantage of a CSS-compiler to ease our work.
+        </li>
+    </ul>
     </p>
-  </section>
-  <section typeof="sa:HowToUse" id="howToUse" role="doc-howToUse">
+</section>
+<section typeof="sa:HowToUse" id="howToUse" role="doc-howToUse">
     <h2>How to use</h2>
     <p>Gore is an easy to use website for products recommandations.</p>
     <section id="Login">
-      <h2>Login</h2>
-      <p>
-        The possibility to login is present in all pages, being in the menu from the index and the header from the
-        other 2 pages. A simple click and facebook based login and it is done.
-      </p>
+        <h2>Login</h2>
+        <p>
+            The possibility to login is present in all pages, being in the menu from the index and the header from the
+            other 2 pages. A simple click and facebook based login and it is done.
+        </p>
     </section>
     <section id="Scan">
-      <h2>Scan</h2>
-      <p>
-        Scanning products in the scan page is really easy, clicking on the "Scan new product" button, and positioning
-        the bar code in from of the laptop's webcam or phone' camera and making the photo.
-      </p>
-      <p>On the same page, it is possible to add the scanned products to the favorite lists, and to remove them from
-        said list, all with the help of the "Add to/Remove from favorites"</p>
+        <h2>Scan</h2>
+        <p>
+            Scanning products in the scan page is really easy, clicking on the "Scan new product" button, and
+            positioning
+            the bar code in from of the laptop's webcam or phone' camera and making the photo.
+        </p>
+        <p>On the same page, it is possible to add the scanned products to the favorite lists, and to remove them from
+            said list, all with the help of the "Add to/Remove from favorites"</p>
     </section>
     <section id="Recommandations">
-      <h2>Recommandations</h2>
-      <p>Such recommandations will appear as soon as one enters the recommandations page, and the list will update from
-        every filter change.</p>
+        <h2>Recommandations</h2>
+        <p>Such recommandations will appear as soon as one enters the recommandations page, and the list will update
+            from
+            every filter change.</p>
     </section>
-  </section>
-  <script type="application/ld+json">
+</section>
+<script type="application/ld+json">
     {
         "@context": "http://schema.org/",
         "@type": "WebSite",
@@ -302,7 +439,8 @@
         "keywords": "Products, Products recommandations, Recommandations, Scan",
         "isFamilyFriendly": true
     }
-  </script>
+
+</script>
 </body>
 
 </html>
